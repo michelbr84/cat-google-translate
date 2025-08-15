@@ -121,8 +121,8 @@
 
 ### Limitações/Bugs conhecidos (CATAAS)
 
-- [ ] `fontColor` no endpoint `/cat/says/:text` aparenta aceitar apenas preto/branco no momento. UI envia nomes (ex.: `red`) e converte hex conhecidos (ex.: `#ff0000` → `red`), porém a imagem ainda renderiza o texto em preto. Registrar para investigação.
-- [x] Verificar se somente `white` funciona além de preto; se sim, documentar workaround e indicar limitação na UI.
+- [x] `fontColor` no endpoint `/cat/says/:text` aparenta aceitar apenas preto/branco na prática. UI envia nomes (ex.: `red`) e converte hex conhecidos (ex.: `#ff0000` → `red`), porém a imagem ainda pode renderizar o texto em preto. Em testes, `white` se mostrou mais confiável. Documentado no README.
+- [x] Verificar se somente `white` funciona além de preto; documentado workaround e limitação na UI.
 - [x] Validar comportamento em combos com `gif`, `filter` e `type` (ex.: `/cat/gif/says/Hello?filter=mono&fontColor=orange&fontSize=20&type=square`).
 
 ## 🎨 Fase 8: Toques Finais
