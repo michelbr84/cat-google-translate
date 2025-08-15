@@ -86,7 +86,7 @@
 
 ## 📱 Fase 7: Responsividade e Melhorias
 
-- [ ] Garantir responsividade mobile
+- [x] Garantir responsividade mobile (layout, botões e sugestões adaptados)
 - [x] Adicionar loading states
 - [x] Implementar error handling básico
 - [ ] Otimizar performance

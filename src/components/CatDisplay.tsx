@@ -46,8 +46,8 @@ export default function CatDisplay({ imageUrl, isLoading, onNewSearch, htmlUrl, 
 	}
 
 	return (
-		<div className="flex flex-col items-center mt-8">
-			<div className="relative bg-white rounded-lg shadow-lg overflow-hidden max-w-2xl">
+		<div className="flex flex-col items-center mt-8 px-4 w-full">
+			<div className="relative bg-white rounded-lg shadow-lg overflow-hidden w-full max-w-2xl">
 				<img
 					src={imageUrl}
 					alt={t('catFound')}
@@ -61,7 +61,7 @@ export default function CatDisplay({ imageUrl, isLoading, onNewSearch, htmlUrl, 
 				/>
 			</div>
 			
-			<div className="flex gap-4 mt-4">
+			<div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-4 w-full max-w-2xl justify-center">
 				<Button 
 					onClick={onNewSearch}
 					variant="outline"

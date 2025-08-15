@@ -141,7 +141,7 @@ const Index = () => {
       </header>
       
       {/* Layout estilo Google */}
-      <div className="flex flex-col items-center justify-center min-h-screen px-4">
+      <div className="flex flex-col items-center justify-center min-h-screen px-4 sm:px-6">
         
         {/* Logo */}
         <div className="mb-8">
@@ -149,7 +149,7 @@ const Index = () => {
         </div>
         
         {/* Barra de Pesquisa */}
-        <div className="w-full max-w-xl mb-8">
+        <div className="w-full max-w-xl mb-8 px-2 sm:px-0">
           <SearchInput
             value={searchQuery}
             onChange={setSearchQuery}

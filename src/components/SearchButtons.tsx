@@ -14,11 +14,11 @@ export default function SearchButtons({
 }: SearchButtonsProps) {
   const { t } = useLanguage();
   return (
-    <div className="flex gap-4 justify-center mt-8">
+    <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8 w-full max-w-xl">
       <Button
         onClick={onSearch}
         disabled={isLoading}
-        className="google-button min-w-[120px]"
+        className="google-button min-w-[120px] w-full sm:w-auto"
         variant="secondary"
       >
         {isLoading ? t('searchingCat') : t('searchButton')}
@@ -27,7 +27,7 @@ export default function SearchButtons({
       <Button
         onClick={onLuckySearch}
         disabled={isLoading}
-        className="google-button min-w-[120px]"
+        className="google-button min-w-[120px] w-full sm:w-auto"
         variant="secondary"
       >
         {t('luckyButton')}

@@ -85,11 +85,11 @@ export default function SearchInput({
 					onFocus={() => setIsFocused(true)}
 					onBlur={() => setIsFocused(false)}
 					placeholder={placeholder}
-					className="flex-1 h-11 px-4 bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none"
+					className="flex-1 h-11 px-4 pr-10 bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none"
 				/>
 			</div>
 			{suggestions.length > 0 && (
-				<div id="tag-suggestions" className="absolute left-0 right-0 mt-1 bg-popover border rounded-md shadow z-10">
+				<div id="tag-suggestions" className="absolute left-0 right-0 mt-1 bg-popover border rounded-md shadow z-20 max-h-56 overflow-auto">
 					{suggestions.map((s) => (
 						<button
 							key={s}
