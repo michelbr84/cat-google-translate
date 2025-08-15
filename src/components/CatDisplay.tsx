@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { Loader2, RotateCcw } from 'lucide-react';
+import { Loader2, RotateCcw, Copy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -53,6 +53,20 @@ export default function CatDisplay({ imageUrl, isLoading, onNewSearch, htmlUrl, 
 					<RotateCcw className="h-4 w-4" />
 					{t('newCat')}
 				</Button>
+				{imageUrl && (
+					<Button
+						variant="secondary"
+						className="flex items-center gap-2"
+						onClick={async () => {
+							try {
+								await navigator.clipboard.writeText(imageUrl);
+							} catch {}
+						}}
+					>
+						<Copy className="h-4 w-4" />
+						Copy URL
+					</Button>
+				)}
 				{htmlUrl && (
 					<a href={htmlUrl} target="_blank" rel="noreferrer">
 						<Button variant="secondary">HTML</Button>

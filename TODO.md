@@ -86,14 +86,15 @@
 - [x] Implementar error handling básico
 - [ ] Otimizar performance
 - [ ] Adicionar animações suaves
- - [x] Persistir opções avançadas em `localStorage`
- - [x] Tooltip/nota de limitação em `fontColor` (CATAAS)
+- [x] Persistir opções avançadas em `localStorage`
+- [x] Tooltip/nota de limitação em `fontColor` (CATAAS)
 
 ## 🧪 Fase 7.1: Testes e Observabilidade
 
 - [ ] Testes e2e básicos (navegação, busca, sorte, opções avançadas)
 - [ ] Limpar warnings de console e mensagens de extensões no README (nota informativa)
 - [ ] Métrica simples de sucesso/erro de carga (dev only)
+ - [x] Botão "Copy URL" no resultado para compartilhar a URL gerada
 
 ## 🐾 Correções e Conformidade com a documentação CATAAS
 
