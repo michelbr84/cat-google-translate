@@ -140,11 +140,18 @@
 
 - [ ] Testes finais em diferentes dispositivos
 - [ ] Validação de todas as funcionalidades da API
-- [ ] Deploy final (Lovable/Vercel/Netlify):
+- [x] Deploy final via Lovable:
   - [x] Remover configuração de GitHub Pages
   - [x] Remover `basename` no `BrowserRouter`
   - [x] Simplificar `vite.config.ts` (sem `base`)
-  - [ ] Reapontar deploy no Lovable
+  - [x] Reapontar deploy no Lovable (online OK)
+
+### Próximos passos sugeridos
+
+- [ ] SEO extra: `canonical`, `meta` de idioma/locale e `sitemap.xml`
+- [ ] A11y: adicionar teste e2e para foco do `LanguageSelector` e `Switch` (HTML/JSON)
+- [ ] Performance: Lighthouse CI no GitHub Actions e preload de fontes/critical CSS
+- [ ] Observabilidade: anexar trace/screenshots do Playwright nos jobs de CI
 
 ---
 
