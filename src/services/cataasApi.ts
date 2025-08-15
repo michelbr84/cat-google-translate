@@ -48,6 +48,8 @@ export interface CatOptions {
   red?: number;
   green?: number;
   blue?: number;
+  html?: boolean;
+  json?: boolean;
 }
 
 export class CataasService {
@@ -117,6 +119,14 @@ export class CataasService {
     }
     if (options.height && options.height > 0) {
       params.append('height', options.height.toString());
+    }
+
+    // Saídas alternativas
+    if (options.html) {
+      params.append('html', 'true');
+    }
+    if (options.json) {
+      params.append('json', 'true');
     }
     
     // Opções de texto - só adicionar se não tem texto na URL

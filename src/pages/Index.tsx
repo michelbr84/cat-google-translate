@@ -26,6 +26,8 @@ interface LocalCatOptions {
   red: number;
   green: number;
   blue: number;
+  html?: boolean;
+  json?: boolean;
 }
 
 const Index = () => {
@@ -33,6 +35,7 @@ const Index = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [catImageUrl, setCatImageUrl] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [lastOptionsBase, setLastOptionsBase] = useState<CatOptions | null>(null);
   
   const [advancedOptions, setAdvancedOptions] = useState<LocalCatOptions>({
     useGif: false,
@@ -51,26 +54,32 @@ const Index = () => {
     red: 100,
     green: 100,
     blue: 100,
+    html: false,
+    json: false,
   });
 
   const performSearch = useCallback(async (isLucky = false) => {
     setIsLoading(true);
     
     try {
-      let options: CatOptions = { ...advancedOptions };
+      // Base options for image rendering (avoid html/json for <img src>)
+      let baseOptions: CatOptions = { ...advancedOptions };
+      delete (baseOptions as any).html;
+      delete (baseOptions as any).json;
       
       // Para busca normal, usar a query de pesquisa como tag
       if (!isLucky && searchQuery.trim()) {
-        options.tag = searchQuery.trim();
+        baseOptions.tag = searchQuery.trim();
       }
       
       // Para "Estou com sorte", não usar nenhuma tag específica (gato aleatório)
       if (isLucky) {
-        options.tag = '';
+        baseOptions.tag = '';
       }
       
-      const imageUrl = await CataasService.getCatImage(options);
+      const imageUrl = await CataasService.getCatImage(baseOptions);
       setCatImageUrl(imageUrl);
+      setLastOptionsBase(baseOptions);
       
       toast.success(isLucky ? t('luckyCatFound') : t('catFound'));
     } catch (error) {
@@ -148,6 +157,8 @@ const Index = () => {
               imageUrl={catImageUrl}
               isLoading={isLoading}
               onNewSearch={handleNewSearch}
+              htmlUrl={lastOptionsBase ? CataasService.buildUrl({ ...lastOptionsBase, html: true }) : undefined}
+              jsonUrl={lastOptionsBase ? CataasService.buildUrl({ ...lastOptionsBase, json: true }) : undefined}
             />
           </div>
         )}

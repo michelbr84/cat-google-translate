@@ -25,6 +25,8 @@ interface LocalCatOptions {
   red: number;
   green: number;
   blue: number;
+  html?: boolean;
+  json?: boolean;
 }
 
 interface AdvancedOptionsProps {
@@ -88,6 +90,24 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
                     <SelectItem value="square">{t('square')}</SelectItem>
                   </SelectContent>
                 </Select>
+              </div>
+
+              {/* Saídas alternativas */}
+              <div className="flex items-center space-x-4">
+                <div className="flex items-center space-x-2">
+                  <Switch
+                    checked={!!options.html}
+                    onCheckedChange={(checked) => updateOption('html', checked)}
+                  />
+                  <Label>HTML</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Switch
+                    checked={!!options.json}
+                    onCheckedChange={(checked) => updateOption('json', checked)}
+                  />
+                  <Label>JSON</Label>
+                </div>
               </div>
             </div>
 
