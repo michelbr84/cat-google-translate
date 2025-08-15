@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { Loader2, RotateCcw, Copy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { toast } from 'sonner';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 interface CatDisplayProps {
@@ -60,6 +61,7 @@ export default function CatDisplay({ imageUrl, isLoading, onNewSearch, htmlUrl, 
 						onClick={async () => {
 							try {
 								await navigator.clipboard.writeText(imageUrl);
+								toast.success(t('copied'));
 							} catch {}
 						}}
 					>

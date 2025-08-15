@@ -53,7 +53,8 @@ const translations = {
     luckyCatFound: 'Gato da sorte encontrado!',
     poweredBy: 'Powered by cataas.com API',
     madeWith: 'Feito com ❤️ para amantes de gatos',
-    language: 'Idioma'
+    language: 'Idioma',
+    copied: 'Copiado!'
   },
   en: {
     cat: 'Cat',
@@ -97,7 +98,8 @@ const translations = {
     luckyCatFound: 'Lucky cat found!',
     poweredBy: 'Powered by cataas.com API',
     madeWith: 'Made with ❤️ for cat lovers',
-    language: 'Language'
+    language: 'Language',
+    copied: 'Copied!'
   },
   es: {
     cat: 'Gato',
@@ -141,7 +143,8 @@ const translations = {
     luckyCatFound: '¡Gato de la suerte encontrado!',
     poweredBy: 'Powered by cataas.com API',
     madeWith: 'Hecho con ❤️ para amantes de gatos',
-    language: 'Idioma'
+    language: 'Idioma',
+    copied: '¡Copiado!'
   },
   fr: {
     cat: 'Chat',
@@ -185,7 +188,8 @@ const translations = {
     luckyCatFound: 'Chat porte-bonheur trouvé!',
     poweredBy: 'Powered by cataas.com API',
     madeWith: 'Fait avec ❤️ pour les amoureux des chats',
-    language: 'Langue'
+    language: 'Langue',
+    copied: 'Copié !'
   },
   de: {
     cat: 'Katze',
@@ -229,7 +233,8 @@ const translations = {
     luckyCatFound: 'Glückskatze gefunden!',
     poweredBy: 'Powered by cataas.com API',
     madeWith: 'Mit ❤️ für Katzenliebhaber gemacht',
-    language: 'Sprache'
+    language: 'Sprache',
+    copied: 'Kopiert!'
   },
   it: {
     cat: 'Gatto',
@@ -273,7 +278,8 @@ const translations = {
     luckyCatFound: 'Gatto fortunato trovato!',
     poweredBy: 'Powered by cataas.com API',
     madeWith: 'Fatto con ❤️ per gli amanti dei gatti',
-    language: 'Lingua'
+    language: 'Lingua',
+    copied: 'Copiato!'
   },
   ja: {
     cat: 'ネコ',
@@ -317,7 +323,8 @@ const translations = {
     luckyCatFound: 'ラッキー猫が見つかりました！',
     poweredBy: 'Powered by cataas.com API',
     madeWith: '猫愛好家のために❤️で作成',
-    language: '言語'
+    language: '言語',
+    copied: 'コピーしました！'
   },
   zh: {
     cat: '猫',
@@ -361,7 +368,8 @@ const translations = {
     luckyCatFound: '找到幸运猫了！',
     poweredBy: 'Powered by cataas.com API',
     madeWith: '为爱猫人士用❤️制作',
-    language: '语言'
+    language: '语言',
+    copied: '已复制！'
   },
   ru: {
     cat: 'Кот',
@@ -405,7 +413,8 @@ const translations = {
     luckyCatFound: 'Счастливый кот найден!',
     poweredBy: 'Powered by cataas.com API',
     madeWith: 'Сделано с ❤️ для любителей котов',
-    language: 'Язык'
+    language: 'Язык',
+    copied: 'Скопировано!'
   },
   ar: {
     cat: 'قط',
@@ -449,7 +458,8 @@ const translations = {
     luckyCatFound: 'تم العثور على قط محظوظ!',
     poweredBy: 'Powered by cataas.com API',
     madeWith: 'صنع بـ ❤️ لمحبي القطط',
-    language: 'اللغة'
+    language: 'اللغة',
+    copied: 'تم النسخ!'
   }
 };
 

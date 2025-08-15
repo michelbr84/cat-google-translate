@@ -94,7 +94,8 @@
 - [ ] Testes e2e básicos (navegação, busca, sorte, opções avançadas)
 - [ ] Limpar warnings de console e mensagens de extensões no README (nota informativa)
 - [ ] Métrica simples de sucesso/erro de carga (dev only)
- - [x] Botão "Copy URL" no resultado para compartilhar a URL gerada
+- [x] Botão "Copy URL" no resultado para compartilhar a URL gerada
+- [x] Toast de feedback ao copiar URL (i18n)
 
 ## 🐾 Correções e Conformidade com a documentação CATAAS
 
