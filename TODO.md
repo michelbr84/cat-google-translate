@@ -151,6 +151,7 @@
 - [x] SEO extra: `canonical`, `meta` de idioma/locale e `sitemap.xml`
 - [x] A11y: testes e2e adicionados para `LanguageSelector` e `Switch` (HTML/JSON)
 - [x] Observabilidade: anexar trace/screenshots do Playwright nos jobs de CI
+- [x] Performance: preload de assets críticos (hero image + canonical dinâmico)
 - [ ] Performance: Lighthouse CI no GitHub Actions (job manual por enquanto) e preload de fontes/critical CSS
 
 ---

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="canonical" href="https://lovable.project.url/" />
+    <link rel="canonical" href="/" />
     <meta http-equiv="content-language" content="en" />
     <link rel="icon" type="image/png" href="cat-favicon.png">
     <link rel="apple-touch-icon" href="cat-favicon.png">
@@ -21,10 +21,16 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="catintro.png" />
+    <link rel="preload" as="image" href="catintro.png" />
   </head>
 
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script type="module">
+      const site = (import.meta.env && import.meta.env.VITE_SITE_URL) || (window.location.origin + '/');
+      const link = document.querySelector('link[rel="canonical"]');
+      if (link) link.setAttribute('href', site);
+    </script>
   </body>
 </html>
