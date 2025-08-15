@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { toast } from 'sonner';
 import Logo from '@/components/Logo';
 import SearchInput from '@/components/SearchInput';
@@ -57,6 +57,27 @@ const Index = () => {
     html: false,
     json: false,
   });
+
+  // Persist advanced options in localStorage
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem('advancedOptions_v1');
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        setAdvancedOptions((prev) => ({
+          ...prev,
+          ...parsed,
+        }));
+      }
+    } catch {}
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('advancedOptions_v1', JSON.stringify(advancedOptions));
+    } catch {}
+  }, [advancedOptions]);
 
   const performSearch = useCallback(async (isLucky = false) => {
     setIsLoading(true);

@@ -137,6 +137,7 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
                       onChange={(e) => updateOption('textColor', e.target.value)}
                       placeholder="red | #ff0000"
                     />
+                    <span className="text-xs text-muted-foreground">May render only black/white on CATAAS</span>
                   </div>
                 </div>
                 

@@ -86,6 +86,8 @@
 - [x] Implementar error handling básico
 - [ ] Otimizar performance
 - [ ] Adicionar animações suaves
+ - [x] Persistir opções avançadas em `localStorage`
+ - [x] Tooltip/nota de limitação em `fontColor` (CATAAS)
 
 ## 🧪 Fase 7.1: Testes e Observabilidade
 
