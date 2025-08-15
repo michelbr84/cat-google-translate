@@ -57,6 +57,7 @@ const Index = () => {
     html: false,
     json: false,
   });
+  const [ariaMessage, setAriaMessage] = useState('');
 
   // Persist advanced options in localStorage
   useEffect(() => {
@@ -106,7 +107,9 @@ const Index = () => {
       setCatImageUrl(imageUrl);
       setLastOptionsBase(baseOptions);
       
-      toast.success(isLucky ? t('luckyCatFound') : t('catFound'));
+      const successMsg = isLucky ? t('luckyCatFound') : t('catFound');
+      toast.success(successMsg);
+      setAriaMessage(successMsg);
       if (import.meta.env.DEV) {
         const key = 'metrics_success';
         const v = Number(localStorage.getItem(key) || 0) + 1;
@@ -117,6 +120,7 @@ const Index = () => {
       console.error('Erro ao buscar gato, fazendo fallback para /cat:', error);
       const fallbackUrl = await CataasService.getRandomCat();
       setCatImageUrl(fallbackUrl);
+      setAriaMessage(t('errorLoadingImage'));
       if (import.meta.env.DEV) {
         const key = 'metrics_error';
         const v = Number(localStorage.getItem(key) || 0) + 1;
@@ -151,6 +155,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <div aria-live="polite" role="status" className="sr-only">{ariaMessage}</div>
       {/* Header com seletor de idioma */}
       <header className="absolute top-2 right-2 sm:top-4 sm:right-4">
         <LanguageSelector />
