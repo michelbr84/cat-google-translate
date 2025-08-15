@@ -64,4 +64,12 @@ npm run dev
 
 ## Acknowledgements
 
+## Deploy (GitHub Pages)
+
+This repo is configured to auto-deploy to GitHub Pages on pushes to `main`.
+
+- Workflow: `.github/workflows/gh-pages.yml`
+- The site is built with `BASE_PATH=/cat-google-translate/` so all routes and assets resolve under the repository subpath.
+- Router is configured with `basename` using `import.meta.env.BASE_URL`.
+
 - Image API: [CATAAS](https://cataas.com/)
