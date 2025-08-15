@@ -26,6 +26,16 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run e2e tests
-        run: npx playwright test
+        run: npx playwright test --reporter=line
+
+      - name: Upload Playwright artifacts (trace & screenshots)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-artifacts
+          path: |
+            playwright-report/**
+            test-results/**
+          if-no-files-found: ignore
 
 
