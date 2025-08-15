@@ -45,12 +45,12 @@ export class CataasService {
     const params = new URLSearchParams();
     
     // Tipo de imagem
-    if (options.imageType) {
+    if (options.imageType && options.imageType !== 'default') {
       params.append('type', options.imageType);
     }
     
     // Filtros
-    if (options.filter) {
+    if (options.filter && options.filter !== 'none') {
       params.append('filter', options.filter);
       
       if (options.filter === 'custom') {

@@ -79,7 +79,7 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">Padrão</SelectItem>
+                    <SelectItem value="default">Padrão</SelectItem>
                     <SelectItem value="xsmall">Extra Pequeno</SelectItem>
                     <SelectItem value="small">Pequeno</SelectItem>
                     <SelectItem value="medium">Médio</SelectItem>
@@ -143,7 +143,7 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="">Nenhum</SelectItem>
+                      <SelectItem value="none">Nenhum</SelectItem>
                       <SelectItem value="blur">Desfoque</SelectItem>
                       <SelectItem value="mono">Preto e Branco</SelectItem>
                       <SelectItem value="negate">Negativo</SelectItem>
