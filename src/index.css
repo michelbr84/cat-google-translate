@@ -28,7 +28,7 @@ All colors MUST be HSL.
     --secondary-foreground: 0 0% 13%;
 
     --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
+    --muted-foreground: 0 0% 40%;
 
     --accent: 0 0% 96%;
     --accent-foreground: 0 0% 13%;
@@ -47,8 +47,8 @@ All colors MUST be HSL.
 
     /* Google search colors */
     --search-background: 0 0% 100%;
-    --search-border: 0 0% 87%;
-    --search-border-hover: 0 0% 78%;
+    --search-border: 0 0% 85%;
+    --search-border-hover: 0 0% 75%;
     --search-shadow: 0 0% 0%;
 
     /* Google button colors */
@@ -64,7 +64,7 @@ All colors MUST be HSL.
 
     /* Advanced options */
     --advanced-background: 0 0% 99%;
-    --advanced-border: 0 0% 92%;
+    --advanced-border: 0 0% 90%;
 
     /* Transition timing */
     --transition: all 0.2s ease-in-out;
@@ -88,7 +88,7 @@ All colors MUST be HSL.
     --secondary-foreground: 0 0% 98%;
 
     --muted: 32 9% 15%;
-    --muted-foreground: 0 0% 65%;
+    --muted-foreground: 0 0% 70%;
 
     --accent: 32 9% 15%;
     --accent-foreground: 0 0% 98%;
@@ -102,8 +102,8 @@ All colors MUST be HSL.
 
     /* Dark mode overrides */
     --search-background: 32 9% 15%;
-    --search-border: 32 9% 25%;
-    --search-border-hover: 32 9% 35%;
+    --search-border: 32 9% 30%;
+    --search-border-hover: 32 9% 40%;
     
     --button-background: 32 9% 20%;
     --button-background-hover: 32 9% 25%;

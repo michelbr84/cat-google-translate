@@ -132,7 +132,7 @@
 - [x] Estados de hover e focus (inputs/selects restantes)
 - [x] Keyboard navigation (sugestões com setas e Enter)
 - [x] Teclado: navegação com Select (teste e2e)
-- [ ] Acessibilidade (contraste final)
+- [x] Acessibilidade (contraste final)
 - [x] Link do GitHub no footer / Página About com instruções
 - [x] Nota sobre warnings de extensões no About
 
