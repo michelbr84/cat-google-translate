@@ -140,7 +140,7 @@
 
 - [ ] Testes finais em diferentes dispositivos
 - [ ] Validação de todas as funcionalidades da API
-- [ ] Deploy final
+- [ ] Deploy final (GitHub Pages/Vercel). Ajustar `base` no Vite via env (`BASE_PATH`) quando necessário.
 
 ---
 
