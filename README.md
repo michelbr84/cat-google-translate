@@ -1,7 +1,7 @@
 <h1 align="center">Cat Google Translate</h1>
 
 <p align="center">
-  <img src="./public/catintro.png" alt="Cat Google Translate hero" width="720" />
+  <img src="./public/catintro.png" alt="Cat Google Translate hero" width="1440" />
 </p>
 
 Google-like interface to search and generate cat images using the CATAAS (Cat as a Service) API, with multi-language support and advanced options.
