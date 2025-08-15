@@ -18,7 +18,7 @@ export default function SearchButtons({
       <Button
         onClick={onSearch}
         disabled={isLoading}
-        className="google-button min-w-[120px] w-full sm:w-auto"
+        className="google-button min-w-[120px] w-full sm:w-auto hover:translate-y-[1px] focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
         variant="secondary"
       >
         {isLoading ? t('searchingCat') : t('searchButton')}
@@ -27,7 +27,7 @@ export default function SearchButtons({
       <Button
         onClick={onLuckySearch}
         disabled={isLoading}
-        className="google-button min-w-[120px] w-full sm:w-auto"
+        className="google-button min-w-[120px] w-full sm:w-auto hover:translate-y-[1px] focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
         variant="secondary"
       >
         {t('luckyButton')}
