@@ -206,6 +206,10 @@ const Index = () => {
             <span>{t('poweredBy')}</span>
             <span>•</span>
             <span>{t('madeWith')}</span>
+            <span>•</span>
+            <a href="https://github.com/michelbr84/cat-google-translate" className="underline hover:no-underline" target="_blank" rel="noreferrer">
+              GitHub
+            </a>
           </div>
         </footer>
       </div>
