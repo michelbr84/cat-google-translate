@@ -150,6 +150,7 @@
 
 - [ ] SEO extra: `canonical`, `meta` de idioma/locale e `sitemap.xml`
 - [ ] A11y: adicionar teste e2e para foco do `LanguageSelector` e `Switch` (HTML/JSON)
+- [x] A11y: testes e2e adicionados para `LanguageSelector` e `Switch` (HTML/JSON)
 - [ ] Performance: Lighthouse CI no GitHub Actions e preload de fontes/critical CSS
 - [ ] Observabilidade: anexar trace/screenshots do Playwright nos jobs de CI
 

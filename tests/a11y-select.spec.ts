@@ -26,4 +26,14 @@ test('Keyboard: focus and open Advanced Image Type select via keyboard', async (
   await expect(trigger).toBeFocused();
 });
 
+test('Keyboard: focus LanguageSelector and toggle menu', async ({ page }) => {
+  await page.goto('/');
+  // The first Tabs may be logo; tab until Language button (has aria-label="Language" in EN)
+  await page.getByRole('button', { name: /language/i }).focus();
+  const langBtn = page.getByRole('button', { name: /language/i });
+  await expect(langBtn).toBeFocused();
+  await page.keyboard.press('Enter');
+  await expect(page.getByRole('menu')).toBeVisible();
+});
+
 
