@@ -27,7 +27,7 @@ export default function LanguageSelector() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="sm" className="gap-2">
+        <Button variant="ghost" size="sm" className="gap-2" aria-label={t('language')}>
           <Languages className="h-4 w-4" />
           <span className="hidden sm:inline">{t('language')}</span>
         </Button>

@@ -85,6 +85,7 @@ export default function SearchInput({
 					onFocus={() => setIsFocused(true)}
 					onBlur={() => setIsFocused(false)}
 					placeholder={placeholder}
+					aria-label={placeholder}
 					className="flex-1 h-11 px-4 pr-10 bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none"
 				/>
 			</div>

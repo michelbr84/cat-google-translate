@@ -136,7 +136,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header com seletor de idioma */}
-      <header className="absolute top-4 right-4">
+      <header className="absolute top-2 right-2 sm:top-4 sm:right-4">
         <LanguageSelector />
       </header>
       

@@ -48,16 +48,16 @@
 - [x] Controles RGB personalizados
 - [x] Dimensões customizadas (width/height)
 - [x] Opções `html=true` e `json=true` (expostas na UI)
-  - [x] `html=true`: botão abre nova aba
-  - [x] `json=true`: botão abre modal com copiar e download
+- [x] `html=true`: botão abre nova aba
+- [x] `json=true`: botão abre modal com copiar e download
 
 ### Melhorias de UX nas avançadas
 
 - [x] Persistir todas as opções avançadas em `localStorage`
 - [x] Mostrar dica/tooltip sobre limitação de cor do texto (CATAAS)
 - [x] Botão para abrir resultado em nova aba (quando `html=true`)
-  - [x] Implementado (HTML)
-  - [x] "Open Image" para abrir a imagem atual em nova aba
+- [x] Implementado (HTML)
+- [x] "Open Image" para abrir a imagem atual em nova aba
 - [x] `HTML` e `JSON` mutuamente exclusivos
 
 ### Checklist CATAAS Advanced (por endpoint)
@@ -91,9 +91,10 @@
 - [x] Implementar error handling básico
 - [x] Otimizar performance (lazy-loading de imagem e decoding async)
 - [x] Adicionar animações suaves em entrada de imagem e ações
- - [x] Adicionar skeleton de carregamento para a área da imagem
+- [x] Adicionar skeleton de carregamento para a área da imagem
 - [x] Persistir opções avançadas em `localStorage`
 - [x] Tooltip/nota de limitação em `fontColor` (CATAAS)
+- [x] Pequenos ajustes de A11y (aria-labels, espaçamento header no mobile)
 
 ## 🧪 Fase 7.1: Testes e Observabilidade
 
@@ -118,17 +119,6 @@
 - [ ] `fontColor` no endpoint `/cat/says/:text` aparenta aceitar apenas preto/branco no momento. UI envia nomes (ex.: `red`) e converte hex conhecidos (ex.: `#ff0000` → `red`), porém a imagem ainda renderiza o texto em preto. Registrar para investigação.
 - [ ] Verificar se somente `white` funciona além de preto; se sim, documentar workaround e indicar limitação na UI.
 - [ ] Validar comportamento em combos com `gif`, `filter` e `type` (ex.: `/cat/gif/says/Hello?filter=mono&fontColor=orange&fontSize=20&type=square`).
-
----
-
-## Próximos passos recomendados
-
-1. Implementar UI para `html=true` e `json=true` nas Opções Avançadas:
-   - `html=true`: abrir nova aba com o HTML gerado
-   - `json=true`: buscar JSON e exibir em modal com botão de copiar/baixar
-2. Adicionar autocomplete de tags via `/api/tags` com cache local (24h) e suporte a múltiplas tags separadas por vírgula
-3. Persistir as opções avançadas em `localStorage` para manter preferências do usuário
-4. Exibir tooltip sobre a limitação de `fontColor` no `says/:text` e oferecer sugestão de usar branco
 
 ## 🎨 Fase 8: Toques Finais
 
