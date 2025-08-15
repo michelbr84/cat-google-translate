@@ -31,7 +31,6 @@ jobs:
 
       - name: Build (with BASE_PATH)
         env:
-          # Replace with your repository name if different
           BASE_PATH: /cat-google-translate/
         run: npm run build
 

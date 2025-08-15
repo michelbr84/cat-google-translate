@@ -144,6 +144,7 @@
   - [x] `vite.config.ts` com `base` via env (`BASE_PATH`)
   - [x] `BrowserRouter` com `basename={import.meta.env.BASE_URL}`
   - [x] Workflow `.github/workflows/gh-pages.yml`
+  - [x] Corrigir paths relativos para assets no `index.html` (favicon/OG/Twitter)
 
 ---
 
