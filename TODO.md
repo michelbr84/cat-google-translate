@@ -98,7 +98,8 @@
 
 ## 🧪 Fase 7.1: Testes e Observabilidade
 
-- [ ] Testes e2e básicos (navegação, busca, sorte, opções avançadas) — configurar Playwright e um teste smoke
+- [x] Testes e2e básicos (navegação, busca) — Playwright configurado e smoke test criado
+- [x] Web server automático para e2e (build + preview com porta fixa)
 - [ ] Limpar warnings de console e mensagens de extensões no README (nota informativa)
 - [ ] Métrica simples de sucesso/erro de carga (dev only)
 - [x] Botão "Copy URL" no resultado para compartilhar a URL gerada

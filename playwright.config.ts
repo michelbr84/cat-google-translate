@@ -5,8 +5,14 @@ export default defineConfig({
 	workers: 1,
 	reporter: 'list',
 	use: {
-		baseURL: 'http://localhost:8080',
+		baseURL: process.env.PLAYWRIGHT_BASE_URL || 'http://localhost:8080',
 		trace: 'on-first-retry',
+	},
+	webServer: {
+		command: 'npm run build && npm run preview -- --port 8080 --strictPort',
+		port: 8080,
+		reuseExistingServer: true,
+		timeout: 120000,
 	},
 	projects: [
 		{
