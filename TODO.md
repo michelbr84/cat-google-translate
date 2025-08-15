@@ -131,7 +131,8 @@
 - [x] Favicon / Apple touch icon
 - [x] Estados de hover e focus (inputs/selects restantes)
 - [x] Keyboard navigation (sugestões com setas e Enter)
-- [ ] Acessibilidade (revisar foco do Select, contraste)
+- [x] Teclado: navegação com Select (teste e2e)
+- [ ] Acessibilidade (contraste final)
 - [x] Link do GitHub no footer / Página About com instruções
 - [x] Nota sobre warnings de extensões no About
 
