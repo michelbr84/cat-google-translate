@@ -91,6 +91,7 @@
 - [x] Implementar error handling básico
 - [x] Otimizar performance (lazy-loading de imagem e decoding async)
 - [x] Adicionar animações suaves em entrada de imagem e ações
+ - [x] Adicionar skeleton de carregamento para a área da imagem
 - [x] Persistir opções avançadas em `localStorage`
 - [x] Tooltip/nota de limitação em `fontColor` (CATAAS)
 

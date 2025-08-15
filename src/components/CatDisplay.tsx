@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Skeleton } from '@/components/ui/skeleton';
 
 interface CatDisplayProps {
 	imageUrl: string | null;
@@ -34,9 +35,14 @@ export default function CatDisplay({ imageUrl, isLoading, onNewSearch, htmlUrl, 
 
 	if (isLoading) {
 		return (
-			<div className="flex flex-col items-center justify-center p-8">
-				<Loader2 className="h-8 w-8 animate-spin text-primary mb-4" />
-				<p className="text-muted-foreground">{t('searchingCat')}</p>
+			<div className="flex flex-col items-center justify-center w-full px-4 mt-8">
+				<div className="w-full max-w-2xl">
+					<Skeleton className="w-full h-96 rounded-lg" />
+				</div>
+				<div className="flex items-center gap-2 mt-4 text-muted-foreground">
+					<Loader2 className="h-5 w-5 animate-spin text-primary" />
+					<span>{t('searchingCat')}</span>
+				</div>
 			</div>
 		);
 	}
@@ -47,7 +53,7 @@ export default function CatDisplay({ imageUrl, isLoading, onNewSearch, htmlUrl, 
 
 	return (
 		<div className="flex flex-col items-center mt-8 px-4 w-full">
-			<div className="relative bg-white rounded-lg shadow-lg overflow-hidden w-full max-w-2xl animate-in fade-in-0 zoom-in-95 duration-200">
+			<div className="relative bg-white rounded-lg shadow-lg overflow-hidden w-full max-w-2xl animate-in fade-in-0 zoom-in-95 duration-300 ease-out">
 				<img
 					src={imageUrl}
 					alt={t('catFound')}
@@ -64,7 +70,7 @@ export default function CatDisplay({ imageUrl, isLoading, onNewSearch, htmlUrl, 
 				/>
 			</div>
 			
-			<div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-4 w-full max-w-2xl justify-center animate-in fade-in-0 slide-in-from-top-2 duration-150">
+			<div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-4 w-full max-w-2xl justify-center animate-in fade-in-0 slide-in-from-top-2 duration-200 ease-out">
 				<Button 
 					onClick={onNewSearch}
 					variant="outline"
