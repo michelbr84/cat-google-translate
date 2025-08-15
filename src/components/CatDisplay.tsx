@@ -16,6 +16,8 @@ interface CatDisplayProps {
 
 export default function CatDisplay({ imageUrl, isLoading, onNewSearch, htmlUrl, jsonUrl }: CatDisplayProps) {
 	const retryingRef = useRef(false);
+	const retryCountRef = useRef(0);
+	const [cacheBust, setCacheBust] = useState<number>(0);
 	const { t } = useLanguage();
 	const [jsonOpen, setJsonOpen] = useState(false);
 	const [jsonText, setJsonText] = useState<string>('');
@@ -51,17 +53,20 @@ export default function CatDisplay({ imageUrl, isLoading, onNewSearch, htmlUrl, 
 		return null;
 	}
 
+	const srcWithBust = imageUrl ? `${imageUrl}${imageUrl.includes('?') ? '&' : '?'}ts=${cacheBust}` : '';
+
 	return (
 		<div className="flex flex-col items-center mt-8 px-4 w-full">
 			<div className="relative bg-white rounded-lg shadow-lg overflow-hidden w-full max-w-2xl animate-in fade-in-0 zoom-in-95 duration-300 ease-out">
 				<img
-					src={imageUrl}
+					src={srcWithBust}
 					alt={t('catFound')}
 					className="w-full h-auto max-h-96 object-contain"
 					loading="lazy"
 					decoding="async"
 					sizes="(max-width: 768px) 100vw, 768px"
 					onLoad={() => {
+						retryCountRef.current = 0;
 						if (import.meta.env.DEV) {
 							const key = 'metrics_image_success';
 							const v = Number(localStorage.getItem(key) || 0) + 1;
@@ -71,14 +76,28 @@ export default function CatDisplay({ imageUrl, isLoading, onNewSearch, htmlUrl, 
 					}}
 					onError={() => {
 						if (retryingRef.current) return;
-						retryingRef.current = true;
-						onNewSearch();
-						setTimeout(() => { retryingRef.current = false; }, 1000);
+						const attempt = retryCountRef.current;
+						if (attempt < 2) {
+							retryingRef.current = true;
+							const delay = 500 * Math.pow(2, attempt);
+							setTimeout(() => {
+								retryCountRef.current = attempt + 1;
+								setCacheBust(Date.now());
+								retryingRef.current = false;
+							}, delay);
+						} else {
+							retryingRef.current = true;
+							setTimeout(() => {
+								retryCountRef.current = 0;
+								onNewSearch();
+								retryingRef.current = false;
+							}, 1500);
+						}
 						if (import.meta.env.DEV) {
 							const key = 'metrics_image_error';
 							const v = Number(localStorage.getItem(key) || 0) + 1;
 							localStorage.setItem(key, String(v));
-							console.info('metrics_image_error', { total: v });
+							console.info('metrics_image_error', { total: v, attempt });
 						}
 					}}
 				/>

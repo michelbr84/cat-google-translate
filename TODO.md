@@ -117,7 +117,7 @@
 - [x] A palavra "Gato" muda de idioma de forma independente ao clique
 - [x] Remover mensagens de erro visíveis ao usuário em falha de imagem
 - [x] Fallback automático para imagem aleatória `/cat` quando a carga falhar
-- [ ] Implementar retentativa com backoff se necessário (resiliência extra)
+- [x] Implementar retentativa com backoff (2 tentativas com cache-busting, depois fallback)
 
 ### Limitações/Bugs conhecidos (CATAAS)
 
