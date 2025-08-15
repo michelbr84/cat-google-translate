@@ -122,8 +122,8 @@
 
 ## 🎨 Fase 8: Toques Finais
 
-- [ ] Meta tags e SEO
-- [ ] Favicon de gato
+- [x] Meta tags e SEO iniciais (title/description/OG/Twitter)
+- [x] Favicon / Apple touch icon
 - [ ] Estados de hover e focus
 - [ ] Keyboard navigation
 - [ ] Acessibilidade
