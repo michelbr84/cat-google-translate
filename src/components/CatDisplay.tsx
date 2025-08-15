@@ -61,11 +61,25 @@ export default function CatDisplay({ imageUrl, isLoading, onNewSearch, htmlUrl, 
 					loading="lazy"
 					decoding="async"
 					sizes="(max-width: 768px) 100vw, 768px"
+					onLoad={() => {
+						if (import.meta.env.DEV) {
+							const key = 'metrics_image_success';
+							const v = Number(localStorage.getItem(key) || 0) + 1;
+							localStorage.setItem(key, String(v));
+							console.info('metrics_image_success', { total: v });
+						}
+					}}
 					onError={() => {
 						if (retryingRef.current) return;
 						retryingRef.current = true;
 						onNewSearch();
 						setTimeout(() => { retryingRef.current = false; }, 1000);
+						if (import.meta.env.DEV) {
+							const key = 'metrics_image_error';
+							const v = Number(localStorage.getItem(key) || 0) + 1;
+							localStorage.setItem(key, String(v));
+							console.info('metrics_image_error', { total: v });
+						}
 					}}
 				/>
 			</div>
@@ -74,7 +88,7 @@ export default function CatDisplay({ imageUrl, isLoading, onNewSearch, htmlUrl, 
 				<Button 
 					onClick={onNewSearch}
 					variant="outline"
-					className="flex items-center gap-2"
+					className="flex items-center gap-2 hover:translate-y-[1px] focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
 				>
 					<RotateCcw className="h-4 w-4" />
 					{t('newCat')}
@@ -82,7 +96,7 @@ export default function CatDisplay({ imageUrl, isLoading, onNewSearch, htmlUrl, 
 				{imageUrl && (
 					<Button
 						variant="secondary"
-						className="flex items-center gap-2"
+						className="flex items-center gap-2 hover:translate-y-[1px] focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
 						onClick={async () => {
 							try {
 								await navigator.clipboard.writeText(imageUrl);
@@ -96,14 +110,14 @@ export default function CatDisplay({ imageUrl, isLoading, onNewSearch, htmlUrl, 
 				)}
 				{imageUrl && (
 					<a href={imageUrl} target="_blank" rel="noreferrer">
-						<Button variant="secondary" className="flex items-center gap-2">
+						<Button variant="secondary" className="flex items-center gap-2 hover:translate-y-[1px] focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">
 							<ExternalLink className="h-4 w-4" /> Open Image
 						</Button>
 					</a>
 				)}
 				{htmlUrl && (
 					<a href={htmlUrl} target="_blank" rel="noreferrer">
-						<Button variant="secondary">HTML</Button>
+						<Button variant="secondary" className="hover:translate-y-[1px] focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2">HTML</Button>
 					</a>
 				)}
 				{jsonUrl && (
