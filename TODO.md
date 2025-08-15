@@ -47,7 +47,7 @@
 - [x] Controles de brilho, luminosidade, saturação, matiz
 - [x] Controles RGB personalizados
 - [x] Dimensões customizadas (width/height)
-- [ ] Opções `html=true` e `json=true` (expor na UI)
+- [x] Opções `html=true` e `json=true` (expostas na UI)
   - [x] `html=true`: botão abre nova aba
   - [x] `json=true`: botão abre modal com copiar e download
 
@@ -55,8 +55,9 @@
 
 - [ ] Persistir todas as opções avançadas em `localStorage`
 - [ ] Mostrar dica/tooltip sobre limitação de cor do texto (CATAAS)
-- [ ] Botão para abrir resultado em nova aba (quando `html=true`)
+- [x] Botão para abrir resultado em nova aba (quando `html=true`)
   - [x] Implementado (HTML)
+  - [x] "Open Image" para abrir a imagem atual em nova aba
 
 ### Checklist CATAAS Advanced (por endpoint)
 

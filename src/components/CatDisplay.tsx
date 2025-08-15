@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { Loader2, RotateCcw, Copy, Download } from 'lucide-react';
+import { Loader2, RotateCcw, Copy, Download, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -84,6 +84,13 @@ export default function CatDisplay({ imageUrl, isLoading, onNewSearch, htmlUrl, 
 						<Copy className="h-4 w-4" />
 						Copy URL
 					</Button>
+				)}
+				{imageUrl && (
+					<a href={imageUrl} target="_blank" rel="noreferrer">
+						<Button variant="secondary" className="flex items-center gap-2">
+							<ExternalLink className="h-4 w-4" /> Open Image
+						</Button>
+					</a>
 				)}
 				{htmlUrl && (
 					<a href={htmlUrl} target="_blank" rel="noreferrer">
