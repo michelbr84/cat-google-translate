@@ -7,6 +7,7 @@ interface LanguageContextType {
   setLanguage: (lang: Language) => void;
   t: (key: string) => string;
   getRandomLanguage: () => void;
+  translate: (lang: Language, key: string) => string;
 }
 
 const translations = {
@@ -517,12 +518,19 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
            key;
   };
 
+  const translate = (lang: Language, key: string): string => {
+    return translations[lang]?.[key as keyof typeof translations[typeof lang]] ||
+           translations.en[key as keyof typeof translations.en] ||
+           key;
+  };
+
   return (
     <LanguageContext.Provider value={{ 
       language, 
       setLanguage: handleSetLanguage, 
       t, 
-      getRandomLanguage 
+      getRandomLanguage, 
+      translate
     }}>
       {children}
     </LanguageContext.Provider>

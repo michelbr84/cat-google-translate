@@ -1,73 +1,62 @@
-# Welcome to your Lovable project
+# Cat Google Translate
 
-## Project info
+Google-like interface to search and generate cat images using the CATAAS (Cat as a Service) API, with multi-language support and advanced options.
 
-**URL**: https://lovable.dev/projects/cfc9e81f-dda3-4b3f-b233-08af9bd709b3
+API links:
+- Site: [cataas.com](https://cataas.com/)
+- Docs: [cataas.com/doc.html](https://cataas.com/doc.html)
 
-## How can I edit this code?
+## Run locally
 
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/cfc9e81f-dda3-4b3f-b233-08af9bd709b3) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+Requirements: Node.js 18+ and npm.
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+git clone https://github.com/michelbr84/cat-google-translate.git
+cd cat-google-translate
+npm ci
 npm run dev
+# Open the URL printed in the terminal (e.g., http://localhost:8080/)
 ```
 
-**Edit a file directly in GitHub**
+## Scripts
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- `npm run dev`: start Vite dev server
+- `npm run build`: production build
+- `npm run preview`: preview the production build
+- `npm run lint`: run linter
 
-**Use GitHub Codespaces**
+## Features
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- Global language selector (pt, en, es, fr, de, it, ja, zh, ru, ar)
+- The “Gato” logo word changes language independently on click (does not alter the global language)
+- Search bar with “Search Cat” and “I'm Feeling Lucky”
+- Advanced options (collapsible):
+  - Image type: `type` (xsmall, small, medium, square)
+  - Filters: `filter` (blur, mono, negate, custom)
+  - Custom HSL: `brightness`, `lightness`, `saturation`, `hue`
+  - RGB adjustments: `r`, `g`, `b`
+  - Dimensions: `width`, `height`
+  - Text on image: `says/:text` (with `fontSize` and `fontColor`)
+- Automatic fallback: on load failure, fetch a random cat (`/cat`)
 
-## What technologies are used for this project?
+## CATAAS endpoint examples
 
-This project is built with:
+- Random: `/cat`
+- By tag: `/cat/:tag`
+- GIF: `/cat/gif`
+- With text: `/cat/says/Hello`
+- Combo (from docs): `/cat/gif/says/Hello?filter=mono&fontColor=orange&fontSize=20&type=square`
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Known limitations
 
-## How can I deploy this project?
+- `fontColor` on `/cat/says/:text` currently seems to render only black/white. Even when sending named colors (e.g., `red`) or normalized hex (e.g., `#ff0000` → `red`), the result may be black. Tracked in `TODO.md`.
 
-Simply open [Lovable](https://lovable.dev/projects/cfc9e81f-dda3-4b3f-b233-08af9bd709b3) and click on Share -> Publish.
+## Tech stack
 
-## Can I connect a custom domain to my Lovable project?
+- Vite + React + TypeScript
+- Tailwind CSS + shadcn/ui
+- lucide-react, sonner
 
-Yes, you can!
+## Acknowledgements
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+- Image API: [CATAAS](https://cataas.com/)

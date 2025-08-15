@@ -1,11 +1,13 @@
 # TODO - Site de Gatos estilo Google
 
 ## ✅ Fase 1: Setup e Design System
+
 - [x] Criar TODO.md
 - [x] Implementar design system baseado no Google (cores, tipografia, componentes)
 - [x] Criar componentes base (Button, Input, Select, etc.)
 
 ## 🐛 Correções Críticas
+
 - [x] Corrigir erro 404 na URL da API cataas.com (estrutura de URL malformada)
 - [x] Implementar sistema multi-linguagem com contexto React
 - [x] Criar seletor de idioma no header
@@ -13,6 +15,7 @@
 - [x] Fallback para inglês e sistema de idioma aleatório
 
 ## 📋 Fase 2: Estrutura Base
+
 - [x] Criar layout principal estilo Google
 - [x] Implementar logo "Gato" com multi-linguagem
 - [x] Criar barra de pesquisa central
@@ -20,30 +23,44 @@
 - [x] Sistema de linguagem aleatória como fallback
 
 ## 🐱 Fase 3: Funcionalidades Básicas da API
-- [ ] Integração com cataas.com API
-- [ ] `/cat` - Gato aleatório (comportamento padrão)
-- [ ] `/cat/:tag` - Gato com tag específica
-- [ ] `/cat/gif` - Gato GIF aleatório
-- [ ] `/cat/says/:text` - Gato com texto
-- [ ] `/cat/:tag/says/:text` - Gato com tag e texto
-- [ ] Parâmetros de texto (fontSize, fontColor)
+
+- [x] Integração com cataas.com API ("Cat as a Service")
+- [x] `/cat` - Gato aleatório (comportamento padrão)
+- [x] `/cat/:tag` - Gato com tag específica
+- [x] `/cat/gif` - Gato GIF aleatório
+- [x] `/cat/says/:text` - Gato com texto
+- [x] `/cat/:tag/says/:text` - Gato com tag e texto
+- [x] Parâmetros de texto (fontSize, fontColor)
 
 ## ⚙️ Fase 4: Interface de Controles
-- [ ] Toggle para escolher entre imagem/GIF
-- [ ] Campo de texto para personalizar mensagem
-- [ ] Seletor de cor para texto
-- [ ] Botões de ação ("Buscar Gato", "Estou com Sorte")
+
+- [x] Toggle para escolher entre imagem/GIF
+- [x] Campo de texto para personalizar mensagem
+- [x] Seletor de cor para texto
+- [x] Botões de ação ("Buscar Gato", "Estou com Sorte")
 
 ## 🔧 Fase 5: Funcionalidades Avançadas
-- [ ] Painel de opções avançadas (collapsible)
-- [ ] Seletor de tipo de imagem (xsmall, small, medium, square)
-- [ ] Filtros de imagem (blur, mono, negate, custom)
-- [ ] Controles de brilho, luminosidade, saturação, matiz
-- [ ] Controles RGB personalizados
-- [ ] Dimensões customizadas (width/height)
-- [ ] Opções HTML e JSON
+
+- [x] Painel de opções avançadas (collapsible)
+- [x] Seletor de tipo de imagem (xsmall, small, medium, square)
+- [x] Filtros de imagem (blur, mono, negate, custom)
+- [x] Controles de brilho, luminosidade, saturação, matiz
+- [x] Controles RGB personalizados
+- [x] Dimensões customizadas (width/height)
+- [ ] Opções `html=true` e `json=true` (expor na UI)
+
+### Checklist CATAAS Advanced (por endpoint)
+
+- [x] `/cat?type=:type` — Implementado (xsmall, small, medium, square)
+- [x] `/cat?filter=:filter` — Implementado (blur, mono, negate, custom)
+- [x] `/cat?filter=custom&brightness=:brightness&lightness=:lightness&saturation=:saturation&hue=:hue` — Implementado
+- [x] `/cat?filter=custom&r=:red&g=:green&b=:blue` — Implementado
+- [x] `/cat?width=:width` e `/cat?height=:height` — Implementado
+- [ ] `/cat?html=true` — Pendente (expor opção na UI)
+- [ ] `/cat?json=true` — Pendente (expor opção na UI)
 
 ## 🌐 Fase 6: Multi-linguagem
+
 - [x] Implementar traduções para "Gato" em diferentes idiomas
 - [x] Sistema de detecção de país por IP
 - [x] Funcionalidade de troca aleatória de idioma
@@ -52,13 +69,31 @@
 - [x] Seletor de idioma no header superior direito
 
 ## 📱 Fase 7: Responsividade e Melhorias
+
 - [ ] Garantir responsividade mobile
-- [ ] Adicionar loading states
-- [ ] Implementar error handling
+- [x] Adicionar loading states
+- [x] Implementar error handling básico
 - [ ] Otimizar performance
 - [ ] Adicionar animações suaves
 
+## 🐾 Correções e Conformidade com a documentação CATAAS
+
+- [x] Ler e seguir a documentação oficial: [cataas.com](https://cataas.com/) e [cataas.com/doc.html](https://cataas.com/doc.html)
+- [x] Usar nomes de filtros e tipos conforme docs (filter: blur, mono, negate, custom; type: xsmall, small, medium, square)
+- [x] Ajustar UI para múltiplos idiomas via contexto
+- [x] A palavra "Gato" muda de idioma de forma independente ao clique
+- [x] Remover mensagens de erro visíveis ao usuário em falha de imagem
+- [x] Fallback automático para imagem aleatória `/cat` quando a carga falhar
+- [ ] Implementar retentativa com backoff se necessário (resiliência extra)
+
+### Limitações/Bugs conhecidos (CATAAS)
+
+- [ ] `fontColor` no endpoint `/cat/says/:text` aparenta aceitar apenas preto/branco no momento. UI envia nomes (ex.: `red`) e converte hex conhecidos (ex.: `#ff0000` → `red`), porém a imagem ainda renderiza o texto em preto. Registrar para investigação.
+- [ ] Verificar se somente `white` funciona além de preto; se sim, documentar workaround e indicar limitação na UI.
+- [ ] Validar comportamento em combos com `gif`, `filter` e `type` (ex.: `/cat/gif/says/Hello?filter=mono&fontColor=orange&fontSize=20&type=square`).
+
 ## 🎨 Fase 8: Toques Finais
+
 - [ ] Meta tags e SEO
 - [ ] Favicon de gato
 - [ ] Estados de hover e focus
@@ -66,13 +101,15 @@
 - [ ] Acessibilidade
 
 ## 🚀 Fase 9: Deploy e Testes
+
 - [ ] Testes finais em diferentes dispositivos
 - [ ] Validação de todas as funcionalidades da API
 - [ ] Deploy final
 
 ---
 
-## Linguagens para "Gato":
+## Linguagens para "Gato"
+
 - Português: Gato
 - English: Cat
 - Español: Gato

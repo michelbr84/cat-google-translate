@@ -1,14 +1,18 @@
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useLanguage, Language } from '@/contexts/LanguageContext';
+import { useMemo, useState } from 'react';
 
 interface LogoProps {
   onClick?: () => void;
 }
 
 export default function Logo({ onClick }: LogoProps) {
-  const { t, getRandomLanguage } = useLanguage();
+  const { translate } = useLanguage();
+  const languages: Language[] = useMemo(() => ['pt', 'en', 'es', 'fr', 'de', 'it', 'ja', 'zh', 'ru', 'ar'], []);
+  const [logoLang, setLogoLang] = useState<Language>('pt');
 
   const handleClick = () => {
-    getRandomLanguage();
+    const randomIndex = Math.floor(Math.random() * languages.length);
+    setLogoLang(languages[randomIndex]);
     onClick?.();
   };
 
@@ -36,7 +40,7 @@ export default function Logo({ onClick }: LogoProps) {
       tabIndex={0}
       onKeyDown={(e) => e.key === 'Enter' && handleClick()}
     >
-      {renderColoredLetters(t('cat'))}
+      {renderColoredLetters(translate(logoLang, 'cat'))}
     </div>
   );
 }

@@ -6,6 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface LocalCatOptions {
   useGif: boolean;
@@ -33,6 +34,7 @@ interface AdvancedOptionsProps {
 
 export default function AdvancedOptions({ options, onChange }: AdvancedOptionsProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useLanguage();
 
   const updateOption = (key: keyof LocalCatOptions, value: any) => {
     onChange({ ...options, [key]: value });
@@ -43,7 +45,7 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
         <CollapsibleTrigger asChild>
           <Button variant="ghost" className="flex items-center gap-2 mx-auto">
-            Opções Avançadas
+            {t('advancedOptions')}
             {isOpen ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
           </Button>
         </CollapsibleTrigger>
@@ -59,7 +61,7 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
                   checked={options.useGif}
                   onCheckedChange={(checked) => updateOption('useGif', checked)}
                 />
-                <Label>Usar GIF em vez de imagem</Label>
+                <Label>{t('enableGif')}</Label>
               </div>
 
               {/* Texto Personalizado */}
@@ -68,22 +70,22 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
                   checked={options.enableText}
                   onCheckedChange={(checked) => updateOption('enableText', checked)}
                 />
-                <Label>Adicionar texto</Label>
+                <Label>{t('enableText')}</Label>
               </div>
 
               {/* Tipo de Imagem */}
               <div className="space-y-2">
-                <Label>Tamanho da Imagem</Label>
+                <Label>{t('imageType')}</Label>
                 <Select value={options.imageType} onValueChange={(value) => updateOption('imageType', value)}>
                   <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="default">Padrão</SelectItem>
-                    <SelectItem value="xsmall">Extra Pequeno</SelectItem>
-                    <SelectItem value="small">Pequeno</SelectItem>
-                    <SelectItem value="medium">Médio</SelectItem>
-                    <SelectItem value="square">Quadrado</SelectItem>
+                    <SelectItem value="default">{t('default')}</SelectItem>
+                    <SelectItem value="xsmall">{t('extraSmall')}</SelectItem>
+                    <SelectItem value="small">{t('small')}</SelectItem>
+                    <SelectItem value="medium">{t('medium')}</SelectItem>
+                    <SelectItem value="square">{t('square')}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -93,16 +95,16 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
             {options.enableText && (
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 bg-advanced-background rounded-lg border">
                 <div className="space-y-2">
-                  <Label>Texto</Label>
+                  <Label>{t('customText')}</Label>
                   <Input
                     value={options.customText}
                     onChange={(e) => updateOption('customText', e.target.value)}
-                    placeholder="Digite o texto aqui"
+                    placeholder={t('customText')}
                   />
                 </div>
                 
                 <div className="space-y-2">
-                  <Label>Cor do Texto</Label>
+                  <Label>{t('textColor')}</Label>
                   <div className="flex gap-2">
                     <input
                       type="color"
@@ -113,13 +115,13 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
                     <Input
                       value={options.textColor}
                       onChange={(e) => updateOption('textColor', e.target.value)}
-                      placeholder="#ffffff"
+                      placeholder="red | #ff0000"
                     />
                   </div>
                 </div>
                 
                 <div className="space-y-2">
-                  <Label>Tamanho da Fonte</Label>
+                  <Label>{t('fontSize')}</Label>
                   <Input
                     type="number"
                     value={options.fontSize}
@@ -133,28 +135,28 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
 
             {/* Filtros */}
             <div className="space-y-4">
-              <Label className="text-lg font-semibold">Filtros de Imagem</Label>
+              <Label className="text-lg font-semibold">{t('filter')}</Label>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label>Filtro</Label>
+                  <Label>{t('filter')}</Label>
                   <Select value={options.filter} onValueChange={(value) => updateOption('filter', value)}>
                     <SelectTrigger>
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="none">Nenhum</SelectItem>
-                      <SelectItem value="blur">Desfoque</SelectItem>
-                      <SelectItem value="mono">Preto e Branco</SelectItem>
-                      <SelectItem value="negate">Negativo</SelectItem>
-                      <SelectItem value="custom">Personalizado</SelectItem>
+                      <SelectItem value="none">{t('none')}</SelectItem>
+                      <SelectItem value="blur">{t('blur')}</SelectItem>
+                      <SelectItem value="mono">{t('mono')}</SelectItem>
+                      <SelectItem value="negate">{t('negative')}</SelectItem>
+                      <SelectItem value="custom">{t('custom')}</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
                 <div className="grid grid-cols-2 gap-2">
                   <div className="space-y-2">
-                    <Label>Largura</Label>
+                    <Label>{t('width')}</Label>
                     <Input
                       type="number"
                       value={options.width || ''}
@@ -163,7 +165,7 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label>Altura</Label>
+                    <Label>{t('height')}</Label>
                     <Input
                       type="number"
                       value={options.height || ''}
@@ -177,10 +179,10 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
               {/* Filtros Personalizados */}
               {options.filter === 'custom' && (
                 <div className="p-4 bg-advanced-background rounded-lg border space-y-4">
-                  <Label className="font-semibold">Ajustes de Cor (HSL)</Label>
+                  <Label className="font-semibold">{t('brightness')}/{t('lightness')}/{t('saturation')}/{t('hue')}</Label>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div className="space-y-2">
-                      <Label>Brilho</Label>
+                      <Label>{t('brightness')}</Label>
                       <Input
                         type="number"
                         value={options.brightness}
@@ -190,7 +192,7 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>Luminosidade</Label>
+                      <Label>{t('lightness')}</Label>
                       <Input
                         type="number"
                         value={options.lightness}
@@ -200,7 +202,7 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>Saturação</Label>
+                      <Label>{t('saturation')}</Label>
                       <Input
                         type="number"
                         value={options.saturation}
@@ -210,7 +212,7 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>Matiz</Label>
+                      <Label>{t('hue')}</Label>
                       <Input
                         type="number"
                         value={options.hue}
@@ -221,10 +223,10 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
                     </div>
                   </div>
 
-                  <Label className="font-semibold">Ajustes RGB</Label>
+                  <Label className="font-semibold">{t('rgbFilters')}</Label>
                   <div className="grid grid-cols-3 gap-4">
                     <div className="space-y-2">
-                      <Label>Vermelho</Label>
+                      <Label>{t('red')}</Label>
                       <Input
                         type="number"
                         value={options.red}
@@ -234,7 +236,7 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>Verde</Label>
+                      <Label>{t('green')}</Label>
                       <Input
                         type="number"
                         value={options.green}
@@ -244,7 +246,7 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>Azul</Label>
+                      <Label>{t('blue')}</Label>
                       <Input
                         type="number"
                         value={options.blue}

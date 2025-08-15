@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface SearchButtonsProps {
   onSearch: () => void;
@@ -11,6 +12,7 @@ export default function SearchButtons({
   onLuckySearch, 
   isLoading = false 
 }: SearchButtonsProps) {
+  const { t } = useLanguage();
   return (
     <div className="flex gap-4 justify-center mt-8">
       <Button
@@ -19,7 +21,7 @@ export default function SearchButtons({
         className="google-button min-w-[120px]"
         variant="secondary"
       >
-        {isLoading ? 'Buscando...' : 'Buscar Gato'}
+        {isLoading ? t('searchingCat') : t('searchButton')}
       </Button>
       
       <Button
@@ -28,7 +30,7 @@ export default function SearchButtons({
         className="google-button min-w-[120px]"
         variant="secondary"
       >
-        Estou com Sorte
+        {t('luckyButton')}
       </Button>
     </div>
   );

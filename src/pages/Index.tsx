@@ -74,8 +74,9 @@ const Index = () => {
       
       toast.success(isLucky ? t('luckyCatFound') : t('catFound'));
     } catch (error) {
-      console.error('Erro ao buscar gato:', error);
-      toast.error('Erro ao buscar gato. Tente novamente.');
+      console.error('Erro ao buscar gato, fazendo fallback para /cat:', error);
+      const fallbackUrl = await CataasService.getRandomCat();
+      setCatImageUrl(fallbackUrl);
     } finally {
       setIsLoading(false);
     }
@@ -90,7 +91,16 @@ const Index = () => {
   };
 
   const handleNewSearch = () => {
-    performSearch(true); // Novo gato aleatório
+    const doRandom = async () => {
+      setIsLoading(true);
+      try {
+        const fallbackUrl = await CataasService.getRandomCat();
+        setCatImageUrl(fallbackUrl);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    void doRandom();
   };
 
   return (

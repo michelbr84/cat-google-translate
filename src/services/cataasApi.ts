@@ -1,5 +1,35 @@
 const BASE_URL = 'https://cataas.com';
 
+// CSS color keywords accepted by many renderers; cataas.com supports named colors (e.g., fontColor=red)
+// Source: CSS Color Module Level 4 keywords
+const CSS_COLOR_KEYWORDS = new Set<string>([
+  'aliceblue','antiquewhite','aqua','aquamarine','azure','beige','bisque','black','blanchedalmond','blue','blueviolet','brown','burlywood','cadetblue','chartreuse','chocolate','coral','cornflowerblue','cornsilk','crimson','cyan','darkblue','darkcyan','darkgoldenrod','darkgray','darkgreen','darkgrey','darkkhaki','darkmagenta','darkolivegreen','darkorange','darkorchid','darkred','darksalmon','darkseagreen','darkslateblue','darkslategray','darkslategrey','darkturquoise','darkviolet','deeppink','deepskyblue','dimgray','dimgrey','dodgerblue','firebrick','floralwhite','forestgreen','fuchsia','gainsboro','ghostwhite','gold','goldenrod','gray','green','greenyellow','grey','honeydew','hotpink','indianred','indigo','ivory','khaki','lavender','lavenderblush','lawngreen','lemonchiffon','lightblue','lightcoral','lightcyan','lightgoldenrodyellow','lightgray','lightgreen','lightgrey','lightpink','lightsalmon','lightseagreen','lightskyblue','lightslategray','lightslategrey','lightsteelblue','lightyellow','lime','limegreen','linen','magenta','maroon','mediumaquamarine','mediumblue','mediumorchid','mediumpurple','mediumseagreen','mediumslateblue','mediumspringgreen','mediumturquoise','mediumvioletred','midnightblue','mintcream','mistyrose','moccasin','navajowhite','navy','oldlace','olive','olivedrab','orange','orangered','orchid','palegoldenrod','palegreen','paleturquoise','palevioletred','papayawhip','peachpuff','peru','pink','plum','powderblue','purple','rebeccapurple','red','rosybrown','royalblue','saddlebrown','salmon','sandybrown','seagreen','seashell','sienna','silver','skyblue','slateblue','slategray','slategrey','snow','springgreen','steelblue','tan','teal','thistle','tomato','turquoise','violet','wheat','white','whitesmoke','yellow','yellowgreen'
+]);
+
+// Minimal hex → named color map for better compatibility if the API ignores hex
+const HEX_TO_NAMED: Record<string, string> = {
+  'ff0000': 'red',
+  '00ff00': 'lime', // CSS keyword "green" is 008000; lime is 00ff00
+  '0000ff': 'blue',
+  '000000': 'black',
+  'ffffff': 'white',
+  'ffff00': 'yellow',
+  'ffa500': 'orange',
+  '800080': 'purple',
+  'ffc0cb': 'pink',
+  '808080': 'gray',
+  '00ffff': 'aqua',
+  'ff00ff': 'fuchsia',
+  'a52a2a': 'brown',
+  '008000': 'green',
+  '008080': 'teal',
+  '000080': 'navy',
+  '808000': 'olive',
+  '800000': 'maroon',
+  'c0c0c0': 'silver',
+  'daa520': 'goldenrod'
+};
+
 export interface CatOptions {
   tag?: string;
   useGif?: boolean;
@@ -93,10 +123,32 @@ export class CataasService {
     if (options.enableText && options.customText && options.fontSize && options.fontSize !== 20) {
       params.append('fontSize', options.fontSize.toString());
     }
-    if (options.enableText && options.customText && options.textColor && options.textColor !== '#ffffff') {
-      // Remover # se presente
-      const color = options.textColor.replace('#', '');
-      params.append('fontColor', color);
+    if (options.enableText && options.customText && options.textColor) {
+      const raw = options.textColor.trim();
+      const rawLower = raw.toLowerCase();
+      // Não anexar se for explicitamente o valor padrão (hex branco)
+      if (rawLower !== '#ffffff') {
+        let colorParam = '';
+        if (CSS_COLOR_KEYWORDS.has(rawLower)) {
+          colorParam = rawLower; // nome de cor aceita pela API (ex.: red)
+        } else {
+          // Normalizar HEX (remover # e validar 3/6 dígitos)
+          let hex = rawLower.replace('#', '');
+          if (/^[0-9a-f]{3}$/.test(hex)) {
+            hex = hex
+              .split('')
+              .map((c) => c + c)
+              .join('');
+          }
+          if (/^[0-9a-f]{6}$/.test(hex)) {
+            // Preferir nome conhecido para maior compatibilidade
+            colorParam = HEX_TO_NAMED[hex] || hex;
+          }
+        }
+        if (colorParam) {
+          params.append('fontColor', colorParam);
+        }
+      }
     }
     
     // Adicionar parâmetros à URL se existirem
