@@ -97,16 +97,32 @@ const Index = () => {
       if (isLucky) {
         baseOptions.tag = '';
       }
+      if (import.meta.env.DEV) {
+        // Log de início da busca (dev only)
+        console.info('metrics_search_start', { isLucky, hasTag: !!baseOptions.tag });
+      }
       
       const imageUrl = await CataasService.getCatImage(baseOptions);
       setCatImageUrl(imageUrl);
       setLastOptionsBase(baseOptions);
       
       toast.success(isLucky ? t('luckyCatFound') : t('catFound'));
+      if (import.meta.env.DEV) {
+        const key = 'metrics_success';
+        const v = Number(localStorage.getItem(key) || 0) + 1;
+        localStorage.setItem(key, String(v));
+        console.info('metrics_search_success', { isLucky, totalSuccess: v });
+      }
     } catch (error) {
       console.error('Erro ao buscar gato, fazendo fallback para /cat:', error);
       const fallbackUrl = await CataasService.getRandomCat();
       setCatImageUrl(fallbackUrl);
+      if (import.meta.env.DEV) {
+        const key = 'metrics_error';
+        const v = Number(localStorage.getItem(key) || 0) + 1;
+        localStorage.setItem(key, String(v));
+        console.info('metrics_search_error', { totalError: v });
+      }
     } finally {
       setIsLoading(false);
     }
