@@ -152,6 +152,7 @@
 - [x] A11y: testes e2e adicionados para `LanguageSelector` e `Switch` (HTML/JSON)
 - [x] Observabilidade: anexar trace/screenshots do Playwright nos jobs de CI
 - [x] Performance: preload de assets críticos (hero image + canonical dinâmico)
+- [x] Robots aponta `sitemap.xml`
 - [ ] Performance: Lighthouse CI no GitHub Actions (job manual por enquanto) e preload de fontes/critical CSS
 
 ---
