@@ -125,7 +125,7 @@
 - [x] Meta tags e SEO iniciais (title/description/OG/Twitter)
 - [x] Favicon / Apple touch icon
 - [ ] Estados de hover e focus
-- [ ] Keyboard navigation
+- [x] Keyboard navigation (sugestões com setas e Enter)
 - [ ] Acessibilidade
 
 ## 🚀 Fase 9: Deploy e Testes

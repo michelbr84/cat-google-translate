@@ -60,6 +60,10 @@ export default function SearchInput({
 		if (e.key === 'Enter') {
 			onSearch();
 		}
+		if (e.key === 'ArrowDown') {
+			const first = document.querySelector<HTMLButtonElement>('#tag-suggestions button');
+			first?.focus();
+		}
 	};
 
 	const applySuggestion = (s: string) => {
@@ -90,13 +94,29 @@ export default function SearchInput({
 				/>
 			</div>
 			{suggestions.length > 0 && (
-				<div id="tag-suggestions" className="absolute left-0 right-0 mt-1 bg-popover border rounded-md shadow z-20 max-h-56 overflow-auto">
-					{suggestions.map((s) => (
+				<div id="tag-suggestions" role="listbox" className="absolute left-0 right-0 mt-1 bg-popover border rounded-md shadow z-20 max-h-56 overflow-auto">
+					{suggestions.map((s, idx) => (
 						<button
 							key={s}
+							role="option"
 							type="button"
-							className="w-full text-left px-3 py-2 hover:bg-accent"
+							className="w-full text-left px-3 py-2 hover:bg-accent focus:bg-accent focus:outline-none"
 							onMouseDown={(e) => { e.preventDefault(); applySuggestion(s); }}
+							onKeyDown={(e) => {
+								if (e.key === 'Enter') { e.preventDefault(); applySuggestion(s); }
+								if (e.key === 'ArrowDown') {
+									const next = (e.currentTarget.parentElement?.querySelectorAll('button')[idx + 1]) as HTMLButtonElement | undefined;
+									next?.focus();
+								}
+								if (e.key === 'ArrowUp') {
+									if (idx === 0) {
+										(containerRef.current?.querySelector('input') as HTMLInputElement | null)?.focus();
+									} else {
+										const prev = (e.currentTarget.parentElement?.querySelectorAll('button')[idx - 1]) as HTMLButtonElement | undefined;
+										prev?.focus();
+									}
+								}
+							}}
 						>
 							{s}
 						</button>
