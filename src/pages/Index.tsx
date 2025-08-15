@@ -207,8 +207,8 @@ const Index = () => {
             <span>•</span>
             <span>{t('madeWith')}</span>
             <span>•</span>
-            <a href="https://github.com/michelbr84/cat-google-translate" className="underline hover:no-underline" target="_blank" rel="noreferrer">
-              GitHub
+            <a href="/about" className="underline hover:no-underline">
+              {t('aboutLink')}
             </a>
           </div>
         </footer>

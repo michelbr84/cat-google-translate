@@ -54,7 +54,14 @@ const translations = {
     poweredBy: 'Powered by cataas.com API',
     madeWith: 'Feito com ❤️ para amantes de gatos',
     language: 'Idioma',
-    copied: 'Copiado!'
+    copied: 'Copiado!',
+    aboutLink: 'Sobre',
+    aboutTitle: 'Gato Google Translate',
+    aboutIntro: 'Busque e gere imagens de gatos via CATAAS usando uma interface estilo Google. Use o seletor de idioma (canto superior direito) para trocar o idioma do site. A palavra do logo muda de idioma de forma independente ao clique.',
+    aboutListItem1: 'Digite tags (você pode combinar com vírgulas: orange,cute)',
+    aboutListItem2: 'Use as Opções Avançadas para filtros, tamanhos, GIF e texto na imagem',
+    aboutListItem3: 'Saída HTML abre nova aba; JSON mostra um modal com copiar/baixar',
+    aboutNote: 'Observação: Alguns navegadores/extensões podem imprimir avisos no console. Eles não afetam o app.'
   },
   en: {
     cat: 'Cat',
@@ -99,7 +106,14 @@ const translations = {
     poweredBy: 'Powered by cataas.com API',
     madeWith: 'Made with ❤️ for cat lovers',
     language: 'Language',
-    copied: 'Copied!'
+    copied: 'Copied!',
+    aboutLink: 'About',
+    aboutTitle: 'Cat Google Translate',
+    aboutIntro: 'Search and generate cat images via CATAAS using a Google-like interface. Use the language selector (top-right) to change the site language. The logo word toggles language independently on click.',
+    aboutListItem1: 'Type tags (you can combine with commas: orange,cute)',
+    aboutListItem2: 'Use Advanced Options for filters, sizes, GIF and text overlays',
+    aboutListItem3: 'HTML output opens a new tab; JSON shows a modal with copy/download',
+    aboutNote: 'Note: Some browsers/extensions may print console warnings. They do not affect the app.'
   },
   es: {
     cat: 'Gato',

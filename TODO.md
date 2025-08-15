@@ -132,8 +132,8 @@
 - [ ] Estados de hover e focus
 - [x] Keyboard navigation (sugestões com setas e Enter)
 - [ ] Acessibilidade
- - [x] Link do GitHub no footer / Página About com instruções
- - [x] Nota sobre warnings de extensões no About
+- [x] Link do GitHub no footer / Página About com instruções
+- [x] Nota sobre warnings de extensões no About
 
 ## 🚀 Fase 9: Deploy e Testes
 
