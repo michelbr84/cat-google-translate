@@ -102,6 +102,7 @@
 - [x] Web server automático para e2e (build + preview com porta fixa)
 - [x] Teste e2e para "Estou com Sorte" carregando imagem
 - [x] Métricas simples (dev only) de sucesso/erro de busca via localStorage/console
+- [x] Testes e2e avançados: HTML e JSON (ações e modal)
 - [ ] Limpar warnings de console e mensagens de extensões no README (nota informativa)
 - [ ] Métrica simples de sucesso/erro de carga (dev only)
 - [x] Botão "Copy URL" no resultado para compartilhar a URL gerada
