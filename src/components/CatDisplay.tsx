@@ -1,8 +1,9 @@
-import { useRef } from 'react';
-import { Loader2, RotateCcw, Copy } from 'lucide-react';
+import { useRef, useState } from 'react';
+import { Loader2, RotateCcw, Copy, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 
 interface CatDisplayProps {
 	imageUrl: string | null;
@@ -15,6 +16,21 @@ interface CatDisplayProps {
 export default function CatDisplay({ imageUrl, isLoading, onNewSearch, htmlUrl, jsonUrl }: CatDisplayProps) {
 	const retryingRef = useRef(false);
 	const { t } = useLanguage();
+	const [jsonOpen, setJsonOpen] = useState(false);
+	const [jsonText, setJsonText] = useState<string>('');
+
+	const handleOpenJson = async () => {
+		if (!jsonUrl) return;
+		try {
+			const res = await fetch(jsonUrl, { headers: { accept: 'application/json' } });
+			const text = await res.text();
+			setJsonText(text);
+			setJsonOpen(true);
+		} catch {
+			setJsonText('{"error":"Failed to load JSON"}');
+			setJsonOpen(true);
+		}
+	};
 
 	if (isLoading) {
 		return (
@@ -75,11 +91,33 @@ export default function CatDisplay({ imageUrl, isLoading, onNewSearch, htmlUrl, 
 					</a>
 				)}
 				{jsonUrl && (
-					<a href={jsonUrl} target="_blank" rel="noreferrer">
-						<Button variant="secondary">JSON</Button>
-					</a>
+					<Button variant="secondary" onClick={handleOpenJson}>JSON</Button>
 				)}
 			</div>
+
+			<Dialog open={jsonOpen} onOpenChange={setJsonOpen}>
+				<DialogContent>
+					<DialogHeader>
+						<DialogTitle>JSON</DialogTitle>
+					</DialogHeader>
+					<div className="space-y-3">
+						<pre className="max-h-80 overflow-auto rounded bg-muted p-3 text-sm whitespace-pre-wrap break-all">{jsonText}</pre>
+						<div className="flex gap-2 justify-end">
+							<Button
+								variant="secondary"
+								onClick={async () => { try { await navigator.clipboard.writeText(jsonText); toast.success(t('copied')); } catch {} }}
+							>
+								<Copy className="h-4 w-4" /> Copy JSON
+							</Button>
+							{jsonUrl && (
+								<a href={jsonUrl} download target="_blank" rel="noreferrer">
+									<Button variant="secondary"><Download className="h-4 w-4" /> Download</Button>
+								</a>
+							)}
+						</div>
+					</div>
+				</DialogContent>
+			</Dialog>
 		</div>
 	);
 }

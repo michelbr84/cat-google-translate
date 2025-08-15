@@ -48,12 +48,15 @@
 - [x] Controles RGB personalizados
 - [x] Dimensões customizadas (width/height)
 - [ ] Opções `html=true` e `json=true` (expor na UI)
+  - [x] `html=true`: botão abre nova aba
+  - [x] `json=true`: botão abre modal com copiar e download
 
 ### Melhorias de UX nas avançadas
 
 - [ ] Persistir todas as opções avançadas em `localStorage`
 - [ ] Mostrar dica/tooltip sobre limitação de cor do texto (CATAAS)
 - [ ] Botão para abrir resultado em nova aba (quando `html=true`)
+  - [x] Implementado (HTML)
 
 ### Checklist CATAAS Advanced (por endpoint)
 
