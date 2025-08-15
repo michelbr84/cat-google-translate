@@ -42,6 +42,25 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
     onChange({ ...options, [key]: value });
   };
 
+  const clampNumber = (value: number, min: number, max: number, fallback: number) => {
+    if (Number.isNaN(value)) return fallback;
+    if (value < min) return min;
+    if (value > max) return max;
+    return value;
+  };
+
+  const updateClamped = (
+    key: keyof LocalCatOptions,
+    raw: number | string,
+    min: number,
+    max: number,
+    fallback: number
+  ) => {
+    const n = typeof raw === 'string' ? parseInt(raw) : raw;
+    const clamped = clampNumber(n as number, min, max, fallback);
+    updateOption(key, clamped);
+  };
+
   return (
     <div className="w-full max-w-4xl mx-auto mt-6">
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
@@ -97,14 +116,28 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
                 <div className="flex items-center space-x-2">
                   <Switch
                     checked={!!options.html}
-                    onCheckedChange={(checked) => updateOption('html', checked)}
+                    disabled={!!options.json}
+                    onCheckedChange={(checked) => {
+                      if (checked) {
+                        onChange({ ...options, html: true, json: false });
+                      } else {
+                        updateOption('html', false);
+                      }
+                    }}
                   />
                   <Label>HTML</Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Switch
                     checked={!!options.json}
-                    onCheckedChange={(checked) => updateOption('json', checked)}
+                    disabled={!!options.html}
+                    onCheckedChange={(checked) => {
+                      if (checked) {
+                        onChange({ ...options, json: true, html: false });
+                      } else {
+                        updateOption('json', false);
+                      }
+                    }}
                   />
                   <Label>JSON</Label>
                 </div>
@@ -146,7 +179,7 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
                   <Input
                     type="number"
                     value={options.fontSize}
-                    onChange={(e) => updateOption('fontSize', parseInt(e.target.value) || 20)}
+                    onChange={(e) => updateClamped('fontSize', e.target.value, 10, 100, 20)}
                     min="10"
                     max="100"
                   />
@@ -207,7 +240,7 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
                       <Input
                         type="number"
                         value={options.brightness}
-                        onChange={(e) => updateOption('brightness', parseInt(e.target.value) || 100)}
+                        onChange={(e) => updateClamped('brightness', e.target.value, 0, 200, 100)}
                         min="0"
                         max="200"
                       />
@@ -217,7 +250,7 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
                       <Input
                         type="number"
                         value={options.lightness}
-                        onChange={(e) => updateOption('lightness', parseInt(e.target.value) || 100)}
+                        onChange={(e) => updateClamped('lightness', e.target.value, 0, 200, 100)}
                         min="0"
                         max="200"
                       />
@@ -227,7 +260,7 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
                       <Input
                         type="number"
                         value={options.saturation}
-                        onChange={(e) => updateOption('saturation', parseInt(e.target.value) || 100)}
+                        onChange={(e) => updateClamped('saturation', e.target.value, 0, 200, 100)}
                         min="0"
                         max="200"
                       />
@@ -237,7 +270,7 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
                       <Input
                         type="number"
                         value={options.hue}
-                        onChange={(e) => updateOption('hue', parseInt(e.target.value) || 0)}
+                        onChange={(e) => updateClamped('hue', e.target.value, 0, 360, 0)}
                         min="0"
                         max="360"
                       />
@@ -251,7 +284,7 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
                       <Input
                         type="number"
                         value={options.red}
-                        onChange={(e) => updateOption('red', parseInt(e.target.value) || 100)}
+                        onChange={(e) => updateClamped('red', e.target.value, 0, 255, 100)}
                         min="0"
                         max="255"
                       />
@@ -261,7 +294,7 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
                       <Input
                         type="number"
                         value={options.green}
-                        onChange={(e) => updateOption('green', parseInt(e.target.value) || 100)}
+                        onChange={(e) => updateClamped('green', e.target.value, 0, 255, 100)}
                         min="0"
                         max="255"
                       />
@@ -271,7 +304,7 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
                       <Input
                         type="number"
                         value={options.blue}
-                        onChange={(e) => updateOption('blue', parseInt(e.target.value) || 100)}
+                        onChange={(e) => updateClamped('blue', e.target.value, 0, 255, 100)}
                         min="0"
                         max="255"
                       />
@@ -280,6 +313,7 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
                 </div>
               )}
             </div>
+            <p className="text-xs text-muted-foreground px-1">HTML and JSON outputs are mutually exclusive.</p>
           </div>
         </CollapsibleContent>
       </Collapsible>

@@ -53,11 +53,12 @@
 
 ### Melhorias de UX nas avançadas
 
-- [ ] Persistir todas as opções avançadas em `localStorage`
-- [ ] Mostrar dica/tooltip sobre limitação de cor do texto (CATAAS)
+- [x] Persistir todas as opções avançadas em `localStorage`
+- [x] Mostrar dica/tooltip sobre limitação de cor do texto (CATAAS)
 - [x] Botão para abrir resultado em nova aba (quando `html=true`)
   - [x] Implementado (HTML)
   - [x] "Open Image" para abrir a imagem atual em nova aba
+- [x] `HTML` e `JSON` mutuamente exclusivos
 
 ### Checklist CATAAS Advanced (por endpoint)
 
@@ -66,8 +67,8 @@
 - [x] `/cat?filter=custom&brightness=:brightness&lightness=:lightness&saturation=:saturation&hue=:hue` — Implementado
 - [x] `/cat?filter=custom&r=:red&g=:green&b=:blue` — Implementado
 - [x] `/cat?width=:width` e `/cat?height=:height` — Implementado
-- [ ] `/cat?html=true` — Pendente (expor opção na UI)
-- [ ] `/cat?json=true` — Pendente (expor opção na UI)
+- [x] `/cat?html=true` — Exposto e funcionando
+- [x] `/cat?json=true` — Exposto e funcionando
 
 ### Integrações auxiliares
 
