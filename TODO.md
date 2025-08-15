@@ -89,8 +89,8 @@
 - [x] Garantir responsividade mobile (layout, botões e sugestões adaptados)
 - [x] Adicionar loading states
 - [x] Implementar error handling básico
-- [ ] Otimizar performance
-- [ ] Adicionar animações suaves
+- [x] Otimizar performance (lazy-loading de imagem e decoding async)
+- [x] Adicionar animações suaves em entrada de imagem e ações
 - [x] Persistir opções avançadas em `localStorage`
 - [x] Tooltip/nota de limitação em `fontColor` (CATAAS)
 

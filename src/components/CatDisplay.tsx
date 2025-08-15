@@ -47,11 +47,14 @@ export default function CatDisplay({ imageUrl, isLoading, onNewSearch, htmlUrl, 
 
 	return (
 		<div className="flex flex-col items-center mt-8 px-4 w-full">
-			<div className="relative bg-white rounded-lg shadow-lg overflow-hidden w-full max-w-2xl">
+			<div className="relative bg-white rounded-lg shadow-lg overflow-hidden w-full max-w-2xl animate-in fade-in-0 zoom-in-95 duration-200">
 				<img
 					src={imageUrl}
 					alt={t('catFound')}
 					className="w-full h-auto max-h-96 object-contain"
+					loading="lazy"
+					decoding="async"
+					sizes="(max-width: 768px) 100vw, 768px"
 					onError={() => {
 						if (retryingRef.current) return;
 						retryingRef.current = true;
@@ -61,7 +64,7 @@ export default function CatDisplay({ imageUrl, isLoading, onNewSearch, htmlUrl, 
 				/>
 			</div>
 			
-			<div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-4 w-full max-w-2xl justify-center">
+			<div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-4 w-full max-w-2xl justify-center animate-in fade-in-0 slide-in-from-top-2 duration-150">
 				<Button 
 					onClick={onNewSearch}
 					variant="outline"
