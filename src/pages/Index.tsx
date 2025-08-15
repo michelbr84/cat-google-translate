@@ -5,7 +5,9 @@ import SearchInput from '@/components/SearchInput';
 import SearchButtons from '@/components/SearchButtons';
 import CatDisplay from '@/components/CatDisplay';
 import AdvancedOptions from '@/components/AdvancedOptions';
+import LanguageSelector from '@/components/LanguageSelector';
 import { CataasService, CatOptions } from '@/services/cataasApi';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface LocalCatOptions {
   useGif: boolean;
@@ -27,6 +29,7 @@ interface LocalCatOptions {
 }
 
 const Index = () => {
+  const { t } = useLanguage();
   const [searchQuery, setSearchQuery] = useState('');
   const [catImageUrl, setCatImageUrl] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -69,7 +72,7 @@ const Index = () => {
       const imageUrl = await CataasService.getCatImage(options);
       setCatImageUrl(imageUrl);
       
-      toast.success(isLucky ? 'Gato da sorte encontrado!' : 'Gato encontrado!');
+      toast.success(isLucky ? t('luckyCatFound') : t('catFound'));
     } catch (error) {
       console.error('Erro ao buscar gato:', error);
       toast.error('Erro ao buscar gato. Tente novamente.');
@@ -92,6 +95,11 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Header com seletor de idioma */}
+      <header className="absolute top-4 right-4">
+        <LanguageSelector />
+      </header>
+      
       {/* Layout estilo Google */}
       <div className="flex flex-col items-center justify-center min-h-screen px-4">
         
@@ -106,7 +114,7 @@ const Index = () => {
             value={searchQuery}
             onChange={setSearchQuery}
             onSearch={handleSearch}
-            placeholder="Digite uma tag para o gato (ex: cute, funny, sleeping)"
+            placeholder={t('searchPlaceholder')}
           />
         </div>
         
@@ -137,9 +145,9 @@ const Index = () => {
         {/* Footer estilo Google */}
         <footer className="mt-auto w-full py-4 text-center text-sm text-muted-foreground">
           <div className="space-x-4">
-            <span>Powered by cataas.com API</span>
+            <span>{t('poweredBy')}</span>
             <span>•</span>
-            <span>Feito com ❤️ para amantes de gatos</span>
+            <span>{t('madeWith')}</span>
           </div>
         </footer>
       </div>

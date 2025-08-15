@@ -89,16 +89,14 @@ export class CataasService {
       params.append('height', options.height.toString());
     }
     
-    // Opções de texto
-    if (options.enableText && options.customText) {
-      if (options.fontSize && options.fontSize !== 20) {
-        params.append('fontSize', options.fontSize.toString());
-      }
-      if (options.textColor && options.textColor !== '#ffffff') {
-        // Remover # se presente
-        const color = options.textColor.replace('#', '');
-        params.append('fontColor', color);
-      }
+    // Opções de texto - só adicionar se não tem texto na URL
+    if (options.enableText && options.customText && options.fontSize && options.fontSize !== 20) {
+      params.append('fontSize', options.fontSize.toString());
+    }
+    if (options.enableText && options.customText && options.textColor && options.textColor !== '#ffffff') {
+      // Remover # se presente
+      const color = options.textColor.replace('#', '');
+      params.append('fontColor', color);
     }
     
     // Adicionar parâmetros à URL se existirem
