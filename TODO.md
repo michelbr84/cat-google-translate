@@ -140,11 +140,11 @@
 
 - [ ] Testes finais em diferentes dispositivos
 - [ ] Validação de todas as funcionalidades da API
-- [x] Deploy (GitHub Pages):
-  - [x] `vite.config.ts` com `base` via env (`BASE_PATH`)
-  - [x] `BrowserRouter` com `basename={import.meta.env.BASE_URL}`
-  - [x] Workflow `.github/workflows/gh-pages.yml`
-  - [x] Corrigir paths relativos para assets no `index.html` (favicon/OG/Twitter)
+- [ ] Deploy final (Lovable/Vercel/Netlify):
+  - [x] Remover configuração de GitHub Pages
+  - [x] Remover `basename` no `BrowserRouter`
+  - [x] Simplificar `vite.config.ts` (sem `base`)
+  - [ ] Reapontar deploy no Lovable
 
 ---
 

@@ -64,12 +64,11 @@ npm run dev
 
 ## Acknowledgements
 
-## Deploy (GitHub Pages)
+## Deploy
 
-This repo is configured to auto-deploy to GitHub Pages on pushes to `main`.
+You can deploy to any static host that serves the `dist/` folder. Common options:
 
-- Workflow: `.github/workflows/gh-pages.yml`
-- The site is built with `BASE_PATH=/cat-google-translate/` so all routes and assets resolve under the repository subpath.
-- Router is configured with `basename` using `import.meta.env.BASE_URL`.
+- Vercel / Netlify: set build command `npm run build` and publish directory `dist/`.
+- Static server: `npx serve dist`.
 
 - Image API: [CATAAS](https://cataas.com/)
