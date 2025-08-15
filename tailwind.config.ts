@@ -52,16 +52,20 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
-				}
+				// Google-inspired colors
+				'search-background': 'hsl(var(--search-background))',
+				'search-border': 'hsl(var(--search-border))',
+				'search-border-hover': 'hsl(var(--search-border-hover))',
+				'search-shadow': 'hsl(var(--search-shadow))',
+				'button-background': 'hsl(var(--button-background))',
+				'button-background-hover': 'hsl(var(--button-background-hover))',
+				'button-border': 'hsl(var(--button-border))',
+				'logo-blue': 'hsl(var(--logo-blue))',
+				'logo-red': 'hsl(var(--logo-red))',
+				'logo-yellow': 'hsl(var(--logo-yellow))',
+				'logo-green': 'hsl(var(--logo-green))',
+				'advanced-background': 'hsl(var(--advanced-background))',
+				'advanced-border': 'hsl(var(--advanced-border))'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
