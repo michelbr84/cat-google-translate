@@ -207,4 +207,18 @@ export class CataasService {
       return false;
     }
   }
+
+  // Tags
+  static async getAllTags(): Promise<string[]> {
+    const url = `${BASE_URL}/api/tags`;
+    const response = await fetch(url, { headers: { 'accept': 'application/json' } });
+    if (!response.ok) {
+      return [];
+    }
+    const data = await response.json();
+    if (Array.isArray(data)) {
+      return data.map((t) => String(t)).filter(Boolean);
+    }
+    return [];
+  }
 }
