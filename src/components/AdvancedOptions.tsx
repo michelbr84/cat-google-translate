@@ -65,13 +65,18 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
 		<div className="w-full max-w-4xl mx-auto mt-6">
 			<Collapsible open={isOpen} onOpenChange={setIsOpen}>
 				<CollapsibleTrigger asChild>
-					<Button variant="ghost" className="flex items-center gap-2 mx-auto">
+					<Button
+						variant="ghost"
+						className="flex items-center gap-2 mx-auto"
+						aria-expanded={isOpen}
+						aria-controls="advanced-options-content"
+					>
 						{t('advancedOptions')}
 						{isOpen ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
 					</Button>
 				</CollapsibleTrigger>
 				
-				<CollapsibleContent>
+				<CollapsibleContent id="advanced-options-content">
 					<div className="advanced-panel space-y-6">
 						{/* Opções Básicas */}
 						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
