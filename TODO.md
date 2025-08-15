@@ -153,7 +153,7 @@
 - [x] Observabilidade: anexar trace/screenshots do Playwright nos jobs de CI
 - [x] Performance: preload de assets críticos (hero image + canonical dinâmico)
 - [x] Robots aponta `sitemap.xml`
-- [ ] Performance: Lighthouse CI no GitHub Actions (job manual por enquanto) e preload de fontes/critical CSS
+- [x] Performance: Lighthouse CI habilitado no GitHub Actions (push + manual + semanal); avaliar preload de fontes/critical CSS após relatório
 
 ---
 

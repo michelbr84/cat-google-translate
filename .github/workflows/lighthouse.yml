@@ -1,7 +1,11 @@
 name: Lighthouse CI
 
 on:
+  push:
+    branches: [ main ]
   workflow_dispatch:
+  schedule:
+    - cron: '0 5 * * 1'  # Weekly on Monday 05:00 UTC
 
 jobs:
   lhci:
@@ -23,9 +27,17 @@ jobs:
         run: npm run build
 
       - name: Serve dist
-        run: npx serve -s dist -l 8080 &
+        run: npx -y serve -s dist -l 8080 &
 
       - name: Run Lighthouse
         run: npx -y @lhci/cli autorun --collect.url=http://localhost:8080/ --upload.target=temporary-public-storage
+
+      - name: Upload Lighthouse artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-report
+          path: ./.lighthouseci
+          if-no-files-found: ignore
 
 
