@@ -104,7 +104,7 @@
 - [x] Métricas simples (dev only) de sucesso/erro de busca via localStorage/console
 - [x] Testes e2e avançados: HTML e JSON (ações e modal)
 - [x] CI: workflow GitHub Actions rodando e2e em cada push/PR
-- [ ] Limpar warnings de console e mensagens de extensões no README (nota informativa)
+- [x] Limpar warnings de console e mensagens de extensões no README (nota informativa)
 - [x] Métrica simples de sucesso/erro de carga (dev only) — image onLoad/onError
 - [x] Botão "Copy URL" no resultado para compartilhar a URL gerada
 - [x] Toast de feedback ao copiar URL (i18n)

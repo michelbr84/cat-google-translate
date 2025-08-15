@@ -54,6 +54,7 @@ npm run dev
 ## Known limitations
 
 - `fontColor` on `/cat/says/:text` currently seems to render only black/white. Even when sending named colors (e.g., `red`) or normalized hex (e.g., `#ff0000` → `red`), the result may be black. Tracked in `TODO.md`.
+ - On development, you may see warnings from browser extensions in the console. We filter some known noisy messages in dev; they do not affect the app.
 
 ## Tech stack
 
