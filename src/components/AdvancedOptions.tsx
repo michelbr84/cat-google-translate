@@ -38,6 +38,24 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
 	const [isOpen, setIsOpen] = useState(false);
 	const { t } = useLanguage();
 
+	// Restrict text colors to exact, known-safe values for CATAAS
+	const allowedColors: { label: string; value: string }[] = [
+		{ label: 'Black (#000000)', value: '#000000' },
+		{ label: 'White (#ffffff)', value: '#ffffff' },
+		{ label: 'Red (#ff0000)', value: '#ff0000' },
+		{ label: 'Green/Lime (#00ff00)', value: '#00ff00' },
+		{ label: 'Blue (#0000ff)', value: '#0000ff' },
+		{ label: 'Yellow (#ffff00)', value: '#ffff00' },
+		{ label: 'Orange (#ffa500)', value: '#ffa500' },
+		{ label: 'Purple (#800080)', value: '#800080' },
+		{ label: 'Pink (#ffc0cb)', value: '#ffc0cb' },
+		{ label: 'Gray (#808080)', value: '#808080' },
+		{ label: 'Aqua (#00ffff)', value: '#00ffff' },
+		{ label: 'Fuchsia (#ff00ff)', value: '#ff00ff' },
+		{ label: 'Brown (#a52a2a)', value: '#a52a2a' },
+		{ label: 'Navy (#000080)', value: '#000080' },
+	];
+
 	const updateOption = (key: keyof LocalCatOptions, value: any) => {
 		onChange({ ...options, [key]: value });
 	};
@@ -163,20 +181,25 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
 								
 								<div className="space-y-2">
 									<Label>{t('textColor')}</Label>
-									<div className="flex gap-2">
-										<input
-											type="color"
-											value={options.textColor}
-											onChange={(e) => updateOption('textColor', e.target.value)}
-											className="w-12 h-8 rounded border"
-										/>
-										<Input
-											value={options.textColor}
-											onChange={(e) => updateOption('textColor', e.target.value)}
-											placeholder="red | #ff0000"
-										/>
-										<span className="text-xs text-muted-foreground">May render only black/white on CATAAS</span>
-									</div>
+									<Select value={options.textColor} onValueChange={(v) => updateOption('textColor', v)}>
+										<SelectTrigger>
+											<SelectValue placeholder="#ffffff" />
+										</SelectTrigger>
+										<SelectContent>
+											{allowedColors.map((c) => (
+												<SelectItem key={c.value} value={c.value}>
+													<span className="inline-flex items-center gap-2">
+														<span
+															className="inline-block w-3 h-3 rounded border"
+															style={{ backgroundColor: c.value }}
+														/>
+														{c.label}
+													</span>
+												</SelectItem>
+											))}
+										</SelectContent>
+									</Select>
+									<span className="text-xs text-muted-foreground">Only exact supported colors are available (e.g., #0000ff)</span>
 								</div>
 								
 								<div className="space-y-2">

@@ -1,13 +1,13 @@
 import { expect, test } from '@playwright/test';
 
-test('fontColor=orange parameter is sent and image loads', async ({ page }) => {
+test('fontColor exact hex (#0000ff) is sent and image loads', async ({ page }) => {
   await page.addInitScript((opts) => {
     try { localStorage.setItem('advancedOptions_v1', JSON.stringify(opts)); } catch {}
   }, {
     useGif: false,
     customText: 'Hello',
     enableText: true,
-    textColor: 'orange',
+    textColor: '#0000ff',
     fontSize: 24,
     imageType: 'default',
     filter: 'none',
@@ -30,17 +30,17 @@ test('fontColor=orange parameter is sent and image loads', async ({ page }) => {
   await expect(img).toBeVisible({ timeout: 15000 });
   const url = (await img.getAttribute('src')) || '';
   expect(url).toContain('/says/');
-  expect(url).toMatch(/fontColor=orange/);
+  expect(url).toMatch(/fontColor=0000ff/);
 });
 
-test('fontColor=white parameter is sent and image loads', async ({ page }) => {
+test('fontColor=white (#ffffff) is sent and image loads', async ({ page }) => {
   await page.addInitScript((opts) => {
     try { localStorage.setItem('advancedOptions_v1', JSON.stringify(opts)); } catch {}
   }, {
     useGif: false,
     customText: 'Hello',
     enableText: true,
-    textColor: 'white',
+    textColor: '#ffffff',
     fontSize: 24,
     imageType: 'default',
     filter: 'none',
@@ -63,7 +63,7 @@ test('fontColor=white parameter is sent and image loads', async ({ page }) => {
   await expect(img).toBeVisible({ timeout: 15000 });
   const url = (await img.getAttribute('src')) || '';
   expect(url).toContain('/says/');
-  expect(url).toMatch(/fontColor=white/);
+  expect(url).toMatch(/fontColor=ffffff/);
 });
 
 

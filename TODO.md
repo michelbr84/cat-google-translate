@@ -119,6 +119,11 @@
 - [x] Fallback automático para imagem aleatória `/cat` quando a carga falhar
 - [x] Implementar retentativa com backoff (2 tentativas com cache-busting, depois fallback)
 
+### Precisão de `fontColor`
+
+- [x] Restringir seleção de cor a um conjunto fixo e suportado (hex exatos como `#000000`, `#ffffff`, `#0000ff`, `#ff0000`, etc.)
+- [x] Padrão inicial ajustado para `#000000` para garantir visibilidade
+
 ### Limitações/Bugs conhecidos (CATAAS)
 
 - [x] `fontColor` no endpoint `/cat/says/:text` aparenta aceitar apenas preto/branco na prática. UI envia nomes (ex.: `red`) e converte hex conhecidos (ex.: `#ff0000` → `red`), porém a imagem ainda pode renderizar o texto em preto. Em testes, `white` se mostrou mais confiável. Documentado no README.
