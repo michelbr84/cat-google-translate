@@ -94,7 +94,7 @@ export default function SearchInput({
 				/>
 			</div>
 			{suggestions.length > 0 && (
-				<div id="tag-suggestions" role="listbox" className="absolute left-0 right-0 mt-1 bg-popover border rounded-md shadow z-20 max-h-56 overflow-auto">
+				<div id="tag-suggestions" role="listbox" aria-label="tag suggestions" className="absolute left-0 right-0 mt-1 bg-popover border rounded-md shadow z-20 max-h-56 overflow-auto">
 					{suggestions.map((s, idx) => (
 						<button
 							key={s}

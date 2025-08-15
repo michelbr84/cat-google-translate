@@ -37,11 +37,11 @@ export default function CatDisplay({ imageUrl, isLoading, onNewSearch, htmlUrl, 
 
 	if (isLoading) {
 		return (
-			<div className="flex flex-col items-center justify-center w-full px-4 mt-8">
+			<div className="flex flex-col items-center justify-center w-full px-4 mt-8" aria-busy="true">
 				<div className="w-full max-w-2xl">
 					<Skeleton className="w-full h-96 rounded-lg" />
 				</div>
-				<div className="flex items-center gap-2 mt-4 text-muted-foreground">
+				<div className="flex items-center gap-2 mt-4 text-muted-foreground" role="status" aria-live="polite">
 					<Loader2 className="h-5 w-5 animate-spin text-primary" />
 					<span>{t('searchingCat')}</span>
 				</div>
@@ -140,7 +140,7 @@ export default function CatDisplay({ imageUrl, isLoading, onNewSearch, htmlUrl, 
 					</a>
 				)}
 				{jsonUrl && (
-					<Button variant="secondary" onClick={handleOpenJson}>JSON</Button>
+					<Button variant="secondary" className="hover:translate-y-[1px] focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2" onClick={handleOpenJson}>JSON</Button>
 				)}
 			</div>
 
