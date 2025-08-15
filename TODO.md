@@ -67,8 +67,8 @@
 
 ### Integrações auxiliares
 
-- [ ] Autocomplete de tags usando `/api/tags` com cache local (24h)
-- [ ] Suporte a múltiplas tags separadas por vírgula (ex.: `orange,cute`)
+- [x] Autocomplete de tags usando `/api/tags` com cache local (24h)
+- [x] Suporte a múltiplas tags separadas por vírgula (ex.: `orange,cute`)
 
 ## 🌐 Fase 6: Multi-linguagem
 
