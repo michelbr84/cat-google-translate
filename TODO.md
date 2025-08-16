@@ -121,8 +121,8 @@
 
 ### Precisão de `fontColor`
 
-- [x] Restringir seleção de cor a um conjunto fixo e suportado (hex exatos como `#000000`, `#ffffff`, `#0000ff`, `#ff0000`, etc.)
-- [x] Padrão inicial ajustado para `#000000` para garantir visibilidade
+- [x] Restringir seleção às cores por NOME suportadas (ex.: `Orange`, `White`, `Blue`, ...)
+- [x] Padrão inicial ajustado para `Black` (visível por padrão)
 
 ### Limitações/Bugs conhecidos (CATAAS)
 
@@ -143,8 +143,8 @@
 
 ## 🚀 Fase 9: Deploy e Testes
 
-- [ ] Testes finais em diferentes dispositivos
-- [ ] Validação de todas as funcionalidades da API
+- [x] Testes finais em diferentes dispositivos
+- [x] Validação de todas as funcionalidades da API
 - [x] Deploy final via Lovable:
   - [x] Remover configuração de GitHub Pages
   - [x] Remover `basename` no `BrowserRouter`
