@@ -6,9 +6,9 @@ const CSS_COLOR_KEYWORDS = new Set<string>([
   'aliceblue','antiquewhite','aqua','aquamarine','azure','beige','bisque','black','blanchedalmond','blue','blueviolet','brown','burlywood','cadetblue','chartreuse','chocolate','coral','cornflowerblue','cornsilk','crimson','cyan','darkblue','darkcyan','darkgoldenrod','darkgray','darkgreen','darkgrey','darkkhaki','darkmagenta','darkolivegreen','darkorange','darkorchid','darkred','darksalmon','darkseagreen','darkslateblue','darkslategray','darkslategrey','darkturquoise','darkviolet','deeppink','deepskyblue','dimgray','dimgrey','dodgerblue','firebrick','floralwhite','forestgreen','fuchsia','gainsboro','ghostwhite','gold','goldenrod','gray','green','greenyellow','grey','honeydew','hotpink','indianred','indigo','ivory','khaki','lavender','lavenderblush','lawngreen','lemonchiffon','lightblue','lightcoral','lightcyan','lightgoldenrodyellow','lightgray','lightgreen','lightgrey','lightpink','lightsalmon','lightseagreen','lightskyblue','lightslategray','lightslategrey','lightsteelblue','lightyellow','lime','limegreen','linen','magenta','maroon','mediumaquamarine','mediumblue','mediumorchid','mediumpurple','mediumseagreen','mediumslateblue','mediumspringgreen','mediumturquoise','mediumvioletred','midnightblue','mintcream','mistyrose','moccasin','navajowhite','navy','oldlace','olive','olivedrab','orange','orangered','orchid','palegoldenrod','palegreen','paleturquoise','palevioletred','papayawhip','peachpuff','peru','pink','plum','powderblue','purple','rebeccapurple','red','rosybrown','royalblue','saddlebrown','salmon','sandybrown','seagreen','seashell','sienna','silver','skyblue','slateblue','slategray','slategrey','snow','springgreen','steelblue','tan','teal','thistle','tomato','turquoise','violet','wheat','white','whitesmoke','yellow','yellowgreen'
 ]);
 
-// Allowed exact hex colors known to work reliably with CATAAS
-const ALLOWED_HEX = new Set<string> ([
-  '000000','ffffff','ff0000','00ff00','0000ff','ffff00','ffa500','800080','ffc0cb','808080','00ffff','ff00ff','a52a2a','000080'
+// Allowed exact color NAMES known to work reliably with CATAAS
+const ALLOWED_NAMES = new Set<string>([
+  'black','white','red','lime','blue','yellow','orange','purple','pink','gray','aqua','fuchsia','brown','navy'
 ]);
 
 export interface CatOptions {
@@ -117,27 +117,9 @@ export class CataasService {
     if (options.enableText && options.customText && options.textColor) {
       const raw = options.textColor.trim();
       const rawLower = raw.toLowerCase();
-      let colorParam = '';
-      if (!rawLower.startsWith('#')) {
-        // Se vier sem # (nome), não enviar
-        colorParam = '';
-      } else {
-        // Normalizar HEX (remover # e validar 3/6 dígitos)
-        let hex = rawLower.replace('#', '');
-        if (/^[0-9a-f]{3}$/.test(hex)) {
-          hex = hex
-            .split('')
-            .map((c) => c + c)
-            .join('');
-        }
-        if (/^[0-9a-f]{6}$/.test(hex)) {
-          if (ALLOWED_HEX.has(hex)) {
-            colorParam = hex;
-          }
-        }
-      }
-      if (colorParam) {
-        params.append('fontColor', colorParam);
+      // Enviar APENAS nomes de cores
+      if (ALLOWED_NAMES.has(rawLower)) {
+        params.append('fontColor', raw);
       }
     }
     

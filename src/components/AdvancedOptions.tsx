@@ -38,22 +38,22 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
 	const [isOpen, setIsOpen] = useState(false);
 	const { t } = useLanguage();
 
-	// Restrict text colors to exact, known-safe values for CATAAS
-	const allowedColors: { label: string; value: string }[] = [
-		{ label: 'Black (#000000)', value: '#000000' },
-		{ label: 'White (#ffffff)', value: '#ffffff' },
-		{ label: 'Red (#ff0000)', value: '#ff0000' },
-		{ label: 'Green/Lime (#00ff00)', value: '#00ff00' },
-		{ label: 'Blue (#0000ff)', value: '#0000ff' },
-		{ label: 'Yellow (#ffff00)', value: '#ffff00' },
-		{ label: 'Orange (#ffa500)', value: '#ffa500' },
-		{ label: 'Purple (#800080)', value: '#800080' },
-		{ label: 'Pink (#ffc0cb)', value: '#ffc0cb' },
-		{ label: 'Gray (#808080)', value: '#808080' },
-		{ label: 'Aqua (#00ffff)', value: '#00ffff' },
-		{ label: 'Fuchsia (#ff00ff)', value: '#ff00ff' },
-		{ label: 'Brown (#a52a2a)', value: '#a52a2a' },
-		{ label: 'Navy (#000080)', value: '#000080' },
+	// Restrict text colors to exact, known-safe names for CATAAS (value = color name)
+	const allowedColors: { label: string; value: string; hex: string }[] = [
+		{ label: 'Black', value: 'Black', hex: '#000000' },
+		{ label: 'White', value: 'White', hex: '#ffffff' },
+		{ label: 'Red', value: 'Red', hex: '#ff0000' },
+		{ label: 'Lime', value: 'Lime', hex: '#00ff00' },
+		{ label: 'Blue', value: 'Blue', hex: '#0000ff' },
+		{ label: 'Yellow', value: 'Yellow', hex: '#ffff00' },
+		{ label: 'Orange', value: 'Orange', hex: '#ffa500' },
+		{ label: 'Purple', value: 'Purple', hex: '#800080' },
+		{ label: 'Pink', value: 'Pink', hex: '#ffc0cb' },
+		{ label: 'Gray', value: 'Gray', hex: '#808080' },
+		{ label: 'Aqua', value: 'Aqua', hex: '#00ffff' },
+		{ label: 'Fuchsia', value: 'Fuchsia', hex: '#ff00ff' },
+		{ label: 'Brown', value: 'Brown', hex: '#a52a2a' },
+		{ label: 'Navy', value: 'Navy', hex: '#000080' },
 	];
 
 	const updateOption = (key: keyof LocalCatOptions, value: any) => {
@@ -183,7 +183,7 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
 									<Label>{t('textColor')}</Label>
 									<Select value={options.textColor} onValueChange={(v) => updateOption('textColor', v)}>
 										<SelectTrigger>
-											<SelectValue placeholder="#ffffff" />
+											<SelectValue placeholder="Black" />
 										</SelectTrigger>
 										<SelectContent>
 											{allowedColors.map((c) => (
@@ -191,15 +191,15 @@ export default function AdvancedOptions({ options, onChange }: AdvancedOptionsPr
 													<span className="inline-flex items-center gap-2">
 														<span
 															className="inline-block w-3 h-3 rounded border"
-															style={{ backgroundColor: c.value }}
+															style={{ backgroundColor: c.hex }}
 														/>
-														{c.label}
+														{c.label} ({c.hex})
 													</span>
 												</SelectItem>
 											))}
 										</SelectContent>
 									</Select>
-									<span className="text-xs text-muted-foreground">Only exact supported colors are available (e.g., #0000ff)</span>
+									<span className="text-xs text-muted-foreground">Only exact supported color names are available (e.g., Orange)</span>
 								</div>
 								
 								<div className="space-y-2">

@@ -41,7 +41,7 @@ const Index = () => {
     useGif: false,
     customText: '',
     enableText: false,
-    textColor: '#000000',
+    textColor: 'Black',
     fontSize: 20,
     imageType: 'default',
     filter: 'none',
